@@ -6,28 +6,59 @@
 <p class='mt-5'>Welcome {{request.user}}</p>
 {% endif %}
 
-{% csrf_token %}
-<div class="w-50">
-    <div class="border border-dark shadow-sm p-3 m-5">
-        <form method="POST">
-            <u>Create A Category</u>
-            {{cform|crispy}}
-            <input type="submit" value="create">
-        </form>
+
+<div class="row justify-content-between">
+    <div class="w-40 m-3">
+        <div class="card p-3 m-3">
+            <b>Categories Created</b>
+            {% for i in categories %}
+            <p>{{i}}</p>
+            {% endfor %}
+        </div>
+        <div class="card p-3 m-3">
+            <b>Tags Created</b>
+            {% for i in tags %}
+            <p>{{i}}</p>
+            {% endfor %}
+        </div>
+        <div class="card p-3 m-3">
+            <b>Products Created</b>
+            {% for i in products %}
+            <p>{{i.name}} ${{i.price}}</p>
+            <p>Tags: 
+                {% for j in i.tag.all %}<p>{{j.name}}</p>{% endfor %}
+            </p>
+
+            <p>Category: {{i.category}}</p>
+            <hr>
+            {% endfor %}
+        </div>
     </div>
-    <div class="border border-dark shadow-sm p-3 m-5">
-        <form method="POST">
-            <u>Create A Tag</u>
-            {{tform|crispy}}
-            <input type="submit" value="create">
-        </form>
-    </div>
-    <div class="border border-dark shadow-sm p-3 m-5">
-        <form method="POST">
-            <u>Create A Product</u>
-            {{pform|crispy}}
-            <input type="submit" value="create">
-        </form>
+    <div class="w-50">
+        <div class="border border-dark shadow-sm p-3 m-5">
+            <form method="POST" id='cform'>
+                {% csrf_token %}
+                <u>Create A Category</u>
+                {{cform|crispy}}
+                <input type="submit" value="create" form="cform" name="csubmit">
+            </form>
+        </div>
+        <div class="border border-dark shadow-sm p-3 m-5">
+            <form method="POST" id='tform'>
+                {% csrf_token %}
+                <u>Create A Tag</u>
+                {{tform|crispy}}
+                <input type="submit" value="create" form="tform" name="tsubmit">
+            </form>
+        </div>
+        <div class="border border-dark shadow-sm p-3 m-5">
+            <form method="POST" id='pform'>
+                {% csrf_token %}
+                <u>Create A Product</u>
+                {{pform|crispy}}
+                <input type="submit" value="create" form="pform">
+            </form>
+        </div>
     </div>
 </div>
 

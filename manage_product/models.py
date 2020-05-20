@@ -27,4 +27,4 @@ class Product(models.Model):
     creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True)
-    tag = models.ManyToManyField(Tag)
+    tag = models.ManyToManyField(Tag, blank=True)
