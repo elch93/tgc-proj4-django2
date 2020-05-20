@@ -1,0 +1,9 @@
+{% extends 'base.template.html' %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<h2 class='mt-5'>Welcome {{request.user}}</h2>
+
+
+{% endif %}
+
+{% endblock %}
