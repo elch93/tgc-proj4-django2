@@ -95,11 +95,11 @@ def edit(request, item_type, item_id):
             item = get_object_or_404(Category, pk=item_id)
             edited_form = CategoryForm(request.POST, instance=item)
 
-        if item_type == 'tag':
+        elif item_type == 'tag':
             item = get_object_or_404(Tag, pk=item_id)
             edited_form = TagForm(request.POST, instance=item)
 
-        if item_type == 'product':
+        elif item_type == 'product':
             item = get_object_or_404(Product, pk=item_id)
             edited_form = ProductForm(request.POST, instance=item)
 
