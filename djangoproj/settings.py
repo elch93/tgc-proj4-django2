@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    # my apps
+    'manage_product',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +66,6 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'templates', 'allauth'),
-            os.path.join(BASE_DIR, 'manage_product', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

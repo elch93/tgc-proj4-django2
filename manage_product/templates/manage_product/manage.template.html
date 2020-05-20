@@ -6,4 +6,31 @@
 
 {% endif %}
 
+
+<div class="container-fluid">
+    {% csrf_token %}
+    <div class="border border-dark shadow-sm p-3">
+        <form method="POST">
+            <u>Create A Category</u>
+            {{cform.as_p}}
+            <button type="submit">create</button>
+        </form>
+    </div>
+    <div class="border border-dark shadow-sm p-3">
+        <form method="POST">
+            <u>Create A Tag</u>
+            {{tform.as_p}}
+            <button type="submit">create</button>
+        </form>
+    </div>
+    <div class="border border-dark shadow-sm p-3">
+        <form method="POST">
+            <u>Create A Product</u>
+            {{pform.as_p}}
+            <button type="submit">create</button>
+        </form>
+    </div>
+</div>
+
+
 {% endblock %}
