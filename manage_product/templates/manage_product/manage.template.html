@@ -12,13 +12,19 @@
         <div class="card p-3 m-3">
             <b>Categories Created</b>
             {% for i in categories %}
-            <p>{{i}} <a class="btn-warning btn" href="{% url 'delete' item_type='category' item_id=i.id %}">Delete</a></p>
+            <p>{{i}} 
+                <a class="btn-warning btn" href="{% url 'delete' item_type='category' item_id=i.id %}">Delete</a>
+                <a class="btn-warning btn" href="{% url 'edit' item_type='category' item_id=i.id %}">Edit</a>
+            </p>
             {% endfor %}
         </div>
         <div class="card p-3 m-3">
             <b>Tags Created</b>
             {% for i in tags %}
-            <p>{{i}} <a class="btn-warning btn" href="{% url 'delete' item_type='tag' item_id=i.id %}">Delete</a></p>
+            <p>{{i}} 
+                <a class="btn-warning btn" href="{% url 'delete' item_type='tag' item_id=i.id %}">Delete</a>
+                <a class="btn-warning btn" href="{% url 'edit' item_type='tag' item_id=i.id %}">Edit</a>
+            </p>
             {% endfor %}
         </div>
         <div class="card p-3 m-3">
@@ -31,6 +37,7 @@
 
             <p>Category: {{i.category}}</p>
             <a class="btn-warning btn" href="{% url 'delete' item_type='product' item_id=i.id %}">Delete</a>
+            <a class="btn-warning btn mt-3" href="{% url 'edit' item_type='product' item_id=i.id %}">Edit</a>
             <hr>
             {% endfor %}
         </div>
@@ -41,7 +48,7 @@
                 {% csrf_token %}
                 <u>Create A Category</u>
                 {{cform|crispy}}
-                <input type="submit" value="create" form="cform" name="csubmit">
+                <input type="submit" value="create" form="cform" name='csubmit'>
             </form>
         </div>
         <div class="border border-dark shadow-sm p-3 m-5">
@@ -49,7 +56,7 @@
                 {% csrf_token %}
                 <u>Create A Tag</u>
                 {{tform|crispy}}
-                <input type="submit" value="create" form="tform" name="tsubmit">
+                <input type="submit" value="create" form="tform" name='tsubmit'>
             </form>
         </div>
         <div class="border border-dark shadow-sm p-3 m-5">
@@ -57,7 +64,7 @@
                 {% csrf_token %}
                 <u>Create A Product</u>
                 {{pform|crispy}}
-                <input type="submit" value="create" form="pform">
+                <input type="submit" value="create" form="pform" name='psubmit'>
             </form>
         </div>
     </div>

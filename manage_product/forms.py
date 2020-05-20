@@ -9,7 +9,7 @@ class CategoryForm(forms.ModelForm):
 class TagForm(forms.ModelForm):
     class Meta:
         model = Tag
-        fields = ['name']
+        fields = ['tagname']
 
 class ProductForm(forms.ModelForm):
     class Meta:

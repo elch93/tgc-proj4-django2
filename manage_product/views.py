@@ -15,8 +15,6 @@ def index(request):
     all_tags = Tag.objects.all()
     all_products = Product.objects.all()
 
-    print(all_products)
-
     context = {
         'cform': category_form,
         'tform': tag_form,
@@ -29,18 +27,18 @@ def index(request):
         return render(request, 'manage_product/manage.template.html', context)
 
     if request.method == 'POST':
-        print(request.POST.get('tsubmit'))
-        if CategoryForm(request.POST).is_valid() and request.POST.get('csubmit'):
+        # create category, tag, product
+        if ProductForm(request.POST).is_valid() and 'psubmit' in request.POST:
+            pform = ProductForm(request.POST)
+            pform.save()
+
+        elif CategoryForm(request.POST).is_valid() and 'csubmit' in request.POST:
             cform = CategoryForm(request.POST)
             cform.save()
 
-        if TagForm(request.POST).is_valid() and request.POST.get('tsubmit'):
+        elif TagForm(request.POST).is_valid() and 'tsubmit' in request.POST:
             tform = TagForm(request.POST)
             tform.save()
-
-        if ProductForm(request.POST).is_valid():
-            pform = ProductForm(request.POST)
-            pform.save()
 
         return redirect(reverse(index))
 
@@ -59,8 +57,51 @@ def delete(request, item_type, item_id):
         'item_type': item_type.capitalize()
     }
 
+    # confirmation page
     if request.method == 'GET':
         return render(request, 'manage_product/delete.template.html', context)
+    # delete item
     if request.method == 'POST':
         item.delete()
+        return redirect(reverse(index))
+
+
+@login_required
+def edit(request, item_type, item_id):
+    # return the respective form for edit
+    if request.method == 'GET':
+        if item_type == 'category':
+            item = get_object_or_404(Category, pk=item_id)
+            edit_form = CategoryForm(instance=item)
+
+        if item_type == 'tag':
+            item = get_object_or_404(Tag, pk=item_id)
+            edit_form = TagForm(instance=item)
+
+        if item_type == 'product':
+            item = get_object_or_404(Product, pk=item_id)
+            edit_form = ProductForm(instance=item)
+
+        context = {
+            'form': edit_form,
+            'item_type': item_type
+        }
+
+        return render(request, 'manage_product/edit.template.html', context)
+    # save the edited instance
+    if request.method == 'POST':
+        if item_type == 'category':
+            item = get_object_or_404(Category, pk=item_id)
+            edited_form = CategoryForm(request.POST, instance=item)
+
+        if item_type == 'tag':
+            item = get_object_or_404(Tag, pk=item_id)
+            edited_form = TagForm(request.POST, instance=item)
+
+        if item_type == 'product':
+            item = get_object_or_404(Product, pk=item_id)
+            edited_form = ProductForm(request.POST, instance=item)
+
+        if edited_form.is_valid():
+            edited_form.save()
         return redirect(reverse(index))

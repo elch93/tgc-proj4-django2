@@ -1,0 +1,15 @@
+{% extends 'base.template.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<p class='m-5'>Welcome {{request.user}}</p>
+{% endif %}
+
+<form class="w-50 ml-auto mr-auto" method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit">
+</form>
+
+{% endblock %}
