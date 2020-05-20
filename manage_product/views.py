@@ -31,6 +31,7 @@ def index(request):
         if ProductForm(request.POST).is_valid() and 'psubmit' in request.POST:
             pform = ProductForm(request.POST)
             pform.save()
+            print(request.POST)
 
         elif CategoryForm(request.POST).is_valid() and 'csubmit' in request.POST:
             cform = CategoryForm(request.POST)

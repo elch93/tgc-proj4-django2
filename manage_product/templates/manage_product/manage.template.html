@@ -32,7 +32,7 @@
             {% for i in products %}
             <p>{{i.name}} ${{i.price}}</p>
             <p>Tags: 
-                {% for j in i.tag.all %}<p>{{j.name}}</p>{% endfor %}
+                {% for j in i.tags.all %}<p>{{j.tagname}}</p>{% endfor %}
             </p>
 
             <p>Category: {{i.category}}</p>
