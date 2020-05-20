@@ -1,36 +1,36 @@
 {% extends 'base.template.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
 {% if request.user.is_authenticated %}
-<h2 class='mt-5'>Welcome {{request.user}}</h2>
-
-
+<p class='mt-5'>Welcome {{request.user}}</p>
 {% endif %}
 
-
-<div class="container-fluid">
-    {% csrf_token %}
-    <div class="border border-dark shadow-sm p-3">
+{% csrf_token %}
+<div class="w-50">
+    <div class="border border-dark shadow-sm p-3 m-5">
         <form method="POST">
             <u>Create A Category</u>
-            {{cform.as_p}}
-            <button type="submit">create</button>
+            {{cform|crispy}}
+            <input type="submit" value="create">
         </form>
     </div>
-    <div class="border border-dark shadow-sm p-3">
+    <div class="border border-dark shadow-sm p-3 m-5">
         <form method="POST">
             <u>Create A Tag</u>
-            {{tform.as_p}}
-            <button type="submit">create</button>
+            {{tform|crispy}}
+            <input type="submit" value="create">
         </form>
     </div>
-    <div class="border border-dark shadow-sm p-3">
+    <div class="border border-dark shadow-sm p-3 m-5">
         <form method="POST">
             <u>Create A Product</u>
-            {{pform.as_p}}
-            <button type="submit">create</button>
+            {{pform|crispy}}
+            <input type="submit" value="create">
         </form>
     </div>
 </div>
+
 
 
 {% endblock %}

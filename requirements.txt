@@ -5,12 +5,14 @@ chardet==3.0.4
 defusedxml==0.6.0
 Django==3.0.6
 django-allauth==0.41.0
+django-crispy-forms==1.9.1
 flake8==3.8.1
 idna==2.9
 mccabe==0.6.1
 oauthlib==3.1.0
 pycodestyle==2.6.0
 pyflakes==2.2.0
+python-dotenv==0.13.0
 python3-openid==3.1.0
 pytz==2020.1
 requests==2.23.0

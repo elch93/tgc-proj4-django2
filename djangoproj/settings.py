@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     # my apps
+    'crispy_forms',
     'manage_product',
 ]
 
@@ -79,6 +80,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 WSGI_APPLICATION = 'djangoproj.wsgi.application'
 
