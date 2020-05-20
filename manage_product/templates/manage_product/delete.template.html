@@ -1,0 +1,10 @@
+{% extends 'base.template.html' %}
+{% block content %}
+
+<p class="m-5">Are you sure you want to delete <b>{{item_type}}: </b> <b>{{item.name}}</b>?</p>
+<form class="m-5" method="POST">
+    {% csrf_token %}
+    <input class="btn btn-primary" type="submit">
+    <a class="btn btn-primary" href="{% url 'manage_home' %}">No</a>
+</form>
+{% endblock %}

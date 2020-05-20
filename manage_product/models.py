@@ -23,7 +23,7 @@ class Tag(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=255, blank=False)
-    price = models.DecimalField(max_digits=10, decimal_places=3, blank=False)
+    price = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True)

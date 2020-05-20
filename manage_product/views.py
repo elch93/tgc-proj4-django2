@@ -43,3 +43,24 @@ def index(request):
             pform.save()
 
         return redirect(reverse(index))
+
+
+@login_required
+def delete(request, item_type, item_id):
+    if item_type == 'category':
+        item = get_object_or_404(Category, pk=item_id)
+    if item_type == 'tag':
+        item = get_object_or_404(Tag, pk=item_id)
+    if item_type == 'product':
+        item = get_object_or_404(Product, pk=item_id)
+
+    context = {
+        'item': item,
+        'item_type': item_type.capitalize()
+    }
+
+    if request.method == 'GET':
+        return render(request, 'manage_product/delete.template.html', context)
+    if request.method == 'POST':
+        item.delete()
+        return redirect(reverse(index))

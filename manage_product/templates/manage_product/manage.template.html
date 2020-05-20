@@ -12,13 +12,13 @@
         <div class="card p-3 m-3">
             <b>Categories Created</b>
             {% for i in categories %}
-            <p>{{i}}</p>
+            <p>{{i}} <a class="btn-warning btn" href="{% url 'delete' item_type='category' item_id=i.id %}">Delete</a></p>
             {% endfor %}
         </div>
         <div class="card p-3 m-3">
             <b>Tags Created</b>
             {% for i in tags %}
-            <p>{{i}}</p>
+            <p>{{i}} <a class="btn-warning btn" href="{% url 'delete' item_type='tag' item_id=i.id %}">Delete</a></p>
             {% endfor %}
         </div>
         <div class="card p-3 m-3">
@@ -30,6 +30,7 @@
             </p>
 
             <p>Category: {{i.category}}</p>
+            <a class="btn-warning btn" href="{% url 'delete' item_type='product' item_id=i.id %}">Delete</a>
             <hr>
             {% endfor %}
         </div>
