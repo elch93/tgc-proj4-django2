@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'pyuploadcare.dj',
     'manage_product',
     'home',
+    'profiles',
 ]
 
 MIDDLEWARE = [

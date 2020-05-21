@@ -15,8 +15,9 @@
                     Products
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">All</a>
                     <a class="dropdown-item" href="#">T-shirt</a>
-                    <a class="dropdown-item" href="#">Long Sleeve</a>
+                    <a class="dropdown-item" href="#">Long Sleeves</a>
                     <a class="dropdown-item" href="#">Outerwear</a>
                 </div>
             </li>
@@ -28,15 +29,18 @@
             </li>
             {% if not request.user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" onclick="toggleLoginReg()">Login / Register</a>
+                <a class="nav-link" href="{%url 'account_login'%}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'account_signup'%}">Register</a>
             </li>
             {% endif %}
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Account</a>
+                <a class="nav-link" href="#">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="{%url 'account_logout'%}">Logout</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Shopping Bag</a>
@@ -44,57 +48,15 @@
             {% endif %}
             {% if request.user.is_superuser %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Admin</a>
+                <a class="nav-link" href="{%url 'admin:index'%}">Admin</a>
             </li>
             {% endif %}
         </ul>
     </div>
 </nav>
 
-{% if not request.user.is_authenticated %}
-<div class="w-50 ml-auto mr-auto border" id="loginregpanel">
-    <div class="m-3 p-3">
-        <form method='POST'>
-            <p>Login</p>
-            <div>
-                <label>Username: </label>
-                <input type="text" placeholder="Enter your username">
-            </div>
-            <div>
-                <label>Password: </label>
-                <input type="password" placeholder="Enter your password">
-            </div>
-        </form>
-    </div>
-    <div class="m-3 p-3">
-        <form method='POST'>
-            <p>Register</p>
-            <div>
-                <label>Username: </label>
-                <input type="text" placeholder="Enter your username">
-            </div>
-            <div>
-                <label>Email Address: </label>
-                <input type="password" placeholder="Enter your email">
-            </div>
-            <div>
-                <label>Password: </label>
-                <input type="password" placeholder="Enter a password">
-            </div>
-            <div>
-                <label>Password Confirmation: </label>
-                <input type="password" placeholder="Enter password again">
-            </div>
-        </form>
-    </div>
-</div>
-{% endif %}
 {% endblock %}
 
 {% block myscript %}
-<script>
-    function toggleLoginReg() {
-        $('#loginregpanel').fadeToggle()
-    }
-</script>
+
 {% endblock %}
