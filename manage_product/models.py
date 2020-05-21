@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from pyuploadcare.dj.models import ImageField
 
 # Create your models here.
 
@@ -27,6 +28,7 @@ class Product(models.Model):
     creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     tags = models.ManyToManyField(Tag, blank=True)
+    image = ImageField(blank=True, manual_crop="")
 
     def __str__(self):
         return self.name

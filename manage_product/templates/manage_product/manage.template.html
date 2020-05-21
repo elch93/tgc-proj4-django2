@@ -12,7 +12,7 @@
         <div class="card p-3 m-3">
             <b>Categories Created</b>
             {% for i in categories %}
-            <p>{{i}} 
+            <p>{{i}}
                 <a class="btn-warning btn" href="{% url 'delete' item_type='category' item_id=i.id %}">Delete</a>
                 <a class="btn-warning btn" href="{% url 'edit' item_type='category' item_id=i.id %}">Edit</a>
             </p>
@@ -21,7 +21,7 @@
         <div class="card p-3 m-3">
             <b>Tags Created</b>
             {% for i in tags %}
-            <p>{{i}} 
+            <p>{{i}}
                 <a class="btn-warning btn" href="{% url 'delete' item_type='tag' item_id=i.id %}">Delete</a>
                 <a class="btn-warning btn" href="{% url 'edit' item_type='tag' item_id=i.id %}">Edit</a>
             </p>
@@ -31,9 +31,12 @@
             <b>Products Created</b>
             {% for i in products %}
             <p>{{i.name}} ${{i.price}}</p>
-            <p>Tags: 
+            <p>Tags:
                 {% for j in i.tags.all %}<p>{{j.tagname}}</p>{% endfor %}
             </p>
+            <div class="w-50">
+                <img class="img-fluid" src="{{ i.image.cdn_url }}-/crop/600x600/center/-/quality/lightest/" alt="">
+            </div>
 
             <p>Category: {{i.category}}</p>
             <a class="btn-warning btn" href="{% url 'delete' item_type='product' item_id=i.id %}">Delete</a>
@@ -59,6 +62,9 @@
                 <input type="submit" value="create" form="tform" name='tsubmit'>
             </form>
         </div>
+        {%block head %}
+        {{ form.media }}
+        {%endblock%}
         <div class="border border-dark shadow-sm p-3 m-5">
             <form method="POST" id='pform'>
                 {% csrf_token %}
