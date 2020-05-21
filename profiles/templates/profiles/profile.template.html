@@ -4,7 +4,19 @@
 {% block title %} My Profile {% endblock %}
 
 {% block content %}
+
+{% if messages %}  
+        <div class='alert alert-success'>    
+            <div>
+                {% for message in messages %} {{ message }} {% endfor %}
+            </div>
+        </div>
+{% endif %}
 profile page
+<br>
+username: {{request.user.username}}
+<br>
+email: {{request.user.email}}
 <br>
 - save default delivery information & more user details like birthday
 <br>
@@ -14,8 +26,12 @@ profile page
 <br>
 <a href="{% url 'homepage' %}">back to home</a>
 
-<div class="row">
-    <form class="w-50 ml-auto mr-auto border m-3 p-3">
+<div class="row p-0 m-0">
+    <div>
+        <h1>Profile</h1>
+        <p>City: {{profile.city}}</p>
+    </div>
+    <form class="w-50 ml-auto mr-auto border m-3 p-3" method="POST">
         {%csrf_token%}
         <u>update profile details</u>
         {{ profile_form | crispy}}

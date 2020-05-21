@@ -1,0 +1,27 @@
+{% extends 'base.template.html' %}
+
+{% block content %}
+{% include 'home/navbar.template.html' %}
+
+<div class="row p-5">
+    <b>Products Created</b>
+    {% for i in products %}
+    {% if category_selected == i.category.name %}
+    <div class="card p-3 m-3 w-40">
+        <p>{{i.name}} ${{i.price}}</p>
+        <p>{{i.category}}</p>
+        <p>Tags:
+            {% for j in i.tags.all %}<p>{{j.tagname}}</p>{% endfor %}
+        </p>
+        <div class="w-50">
+            <img class="img-fluid" src="{{ i.image.cdn_url }}-/crop/600x600/center/-/quality/lightest/" alt="">
+        </div>
+        <hr>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

@@ -1,59 +1,7 @@
 {% extends 'base.template.html' %}
 
 {% block content %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Brand Name</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Products
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">All</a>
-                    <a class="dropdown-item" href="#">T-shirt</a>
-                    <a class="dropdown-item" href="#">Long Sleeves</a>
-                    <a class="dropdown-item" href="#">Outerwear</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
-            </li>
-            {% if not request.user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'account_login'%}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'account_signup'%}">Register</a>
-            </li>
-            {% endif %}
-            {% if request.user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'profile'%}">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'account_logout'%}">Logout</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Shopping Bag</a>
-            </li>
-            {% endif %}
-            {% if request.user.is_superuser %}
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'admin:index'%}">Admin</a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
-</nav>
+{% include 'home/navbar.template.html' %}
 
 <br>
 - Welcome page

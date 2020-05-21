@@ -159,6 +159,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
