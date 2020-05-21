@@ -17,3 +17,13 @@ def view_all(request, category_selected):
     }
     print(category_selected)
     return render(request, 'home/view.template.html', context)
+
+
+def product_details(request, product_id):
+    get_product = get_object_or_404(Product, pk=product_id)
+
+    context = {
+        'product': get_product
+    }
+
+    return render(request, 'home/details.template.html', context)

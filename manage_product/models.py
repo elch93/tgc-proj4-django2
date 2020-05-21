@@ -31,6 +31,8 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     tags = models.ManyToManyField(Tag, blank=True)
     image = ImageField(blank=True, manual_crop="", null=True)
+    description = models.TextField(blank=True)
+    date_posted = models.DateTimeField(blank=False, auto_now=True)
 
     def __str__(self):
         return self.name

@@ -6,7 +6,7 @@
 <div class="row p-5">
     <b>Products Created</b>
     {% for i in products %}
-    {% if category_selected == i.category.name %}
+    {% if category_selected == i.category.name or category_selected == 'all' %}
     <div class="card p-3 m-3 w-40">
         <p>{{i.name}} ${{i.price}}</p>
         <p>{{i.category}}</p>
@@ -17,6 +17,7 @@
             <img class="img-fluid" src="{{ i.image.cdn_url }}-/crop/600x600/center/-/quality/lightest/" alt="">
         </div>
         <hr>
+        <a href="{% url 'product_details' product_id=i.id %}">view details</a>
     </div>
     {% endif %}
     {% endfor %}

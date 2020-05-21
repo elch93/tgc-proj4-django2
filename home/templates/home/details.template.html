@@ -1,0 +1,25 @@
+{% extends 'base.template.html' %}
+
+{% block content %}
+{% include 'home/navbar.template.html' %}
+
+<div class="row p-5">
+    <b>Product Details</b>
+    
+    <div class="card p-3 m-3 w-40">
+        <div class="w-50">
+            <img class="img-fluid" src="{{ product.image.cdn_url }}-/crop/600x600/center/-/quality/lightest/" alt="">
+        </div>
+        <p>{{product.name}} ${{product.price}}</p>
+        <p>{{product.description}}</p>
+        <p>{{product.category}}</p>
+        <p>Tags:
+            {% for j in product.tags.all %}<p>{{j.tagname}}</p>{% endfor %}
+        </p>
+        <hr>
+    </div>
+</div>
+
+
+
+{% endblock %}
