@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'manage_product',
     'home',
     'profiles',
+    'reviews',
 ]
 
 MIDDLEWARE = [
