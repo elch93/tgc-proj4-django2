@@ -1,0 +1,28 @@
+{% extends 'base.template.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Review {% endblock %}
+
+{% block content %}
+
+{% if messages %}  
+        <div class='alert alert-success'>    
+            <div>
+                {% for message in messages %} {{ message }} {% endfor %}
+            </div>
+        </div>
+{% endif %}
+
+<div class="row">
+    <form class="w-50 ml-auto mr-auto border m-3 p-3" method="POST">
+        {%csrf_token%}
+        <u>update profile details</u>
+        {{ review_form | crispy}}
+        <input type="submit">
+    </form>
+</div>
+    
+
+
+
+{% endblock %}

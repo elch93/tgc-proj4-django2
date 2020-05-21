@@ -7,7 +7,7 @@ from django.contrib import messages
 
 
 @login_required
-def index(request):
+def profile(request):
     if request.method == 'GET':
         profile = get_object_or_404(UserProfile, user=request.user)
         profile_form = UserProfileForm(instance=profile)

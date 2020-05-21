@@ -22,4 +22,5 @@ urlpatterns = [
     path('manage_product/', include('manage_product.urls')),
     path('', include('home.urls')),
     path('profile/', include('profiles.urls')),
+    path('review/', include('reviews.urls')),
 ]

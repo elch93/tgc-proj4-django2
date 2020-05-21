@@ -30,7 +30,6 @@ def index(request):
         # create category, tag, product
         if ProductForm(request.POST).is_valid() and 'psubmit' in request.POST:
             pform = ProductForm(request.POST)
-            print('success')
             created_item = pform.save(commit=False)
             created_item.creator = request.user
             pform.save()

@@ -5,13 +5,7 @@
 
 {% block content %}
 
-{% if messages %}  
-        <div class='alert alert-success'>    
-            <div>
-                {% for message in messages %} {{ message }} {% endfor %}
-            </div>
-        </div>
-{% endif %}
+
 profile page
 <br>
 username: {{request.user.username}}
