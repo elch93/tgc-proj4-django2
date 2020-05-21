@@ -12,12 +12,12 @@ class CategoryForm(forms.ModelForm):
 class TagForm(forms.ModelForm):
     class Meta:
         model = Tag
-        fields = ('tagname',)
+        fields = ('name',)
 
 
 class ProductForm(forms.ModelForm):
-    image = ImageField(label="")
+    image = ImageField(label="", required=False)
 
     class Meta:
         model = Product
-        fields = ('name', 'price', 'creator', 'category', 'tags', 'image',)
+        fields = ('name', 'price', 'category', 'tags', 'image',)

@@ -7,6 +7,7 @@ from pyuploadcare.dj.models import ImageField
 
 class Category(models.Model):
     name = models.CharField(max_length=255, blank=False)
+    creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
@@ -16,10 +17,11 @@ class Category(models.Model):
 
 
 class Tag(models.Model):
-    tagname = models.CharField(max_length=255, blank=False)
+    name = models.CharField(max_length=255, blank=False)
+    creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return self.tagname
+        return self.name
 
 
 class Product(models.Model):
@@ -28,7 +30,7 @@ class Product(models.Model):
     creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     tags = models.ManyToManyField(Tag, blank=True)
-    image = ImageField(blank=True, manual_crop="")
+    image = ImageField(blank=True, manual_crop="", null=True)
 
     def __str__(self):
         return self.name

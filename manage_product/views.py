@@ -30,15 +30,21 @@ def index(request):
         # create category, tag, product
         if ProductForm(request.POST).is_valid() and 'psubmit' in request.POST:
             pform = ProductForm(request.POST)
+            print('success')
+            created_item = pform.save(commit=False)
+            created_item.creator = request.user
             pform.save()
-            print(request.POST)
 
         elif CategoryForm(request.POST).is_valid() and 'csubmit' in request.POST:
             cform = CategoryForm(request.POST)
+            created_item = cform.save(commit=False)
+            created_item.creator = request.user
             cform.save()
 
         elif TagForm(request.POST).is_valid() and 'tsubmit' in request.POST:
             tform = TagForm(request.POST)
+            created_item = tform.save(commit=False)
+            created_item.creator = request.user
             tform.save()
 
         return redirect(reverse(index))
