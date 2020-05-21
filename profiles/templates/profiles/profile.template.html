@@ -1,0 +1,28 @@
+{% extends 'base.template.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} My Profile {% endblock %}
+
+{% block content %}
+profile page
+<br>
+- save default delivery information & more user details like birthday
+<br>
+- provide them with a record of their order history
+<br>
+- wishlist?
+<br>
+<a href="{% url 'homepage' %}">back to home</a>
+
+<div class="row">
+    <form class="w-50 ml-auto mr-auto border m-3 p-3">
+        {%csrf_token%}
+        <u>update profile details</u>
+        {{ profile_form | crispy}}
+        <input type="submit">
+    </form>
+</div>
+
+
+
+{% endblock %}

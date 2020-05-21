@@ -1,9 +1,12 @@
 {% extends 'base.template.html' %}
 {% load crispy_forms_tags %}
 
+{% block title %} Manage DB {% endblock %}
+
 {% block content %}
 {% if request.user.is_authenticated %}
 <p class='mt-5'>Welcome {{request.user}}</p>
+<a href="{% url 'homepage' %}">back to home</a>
 {% endif %}
 
 
