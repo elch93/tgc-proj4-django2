@@ -28,21 +28,68 @@
             </li>
             {% if not request.user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Login/Register <span class="sr-only">(current)</span></a>
+                <a class="nav-link" onclick="toggleLoginReg()">Login / Register</a>
             </li>
             {% endif %}
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Account <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Account</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Logout <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Logout></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Shopping Bag <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Shopping Bag</a>
             </li>
             {% endif %}
         </ul>
     </div>
 </nav>
+
+{% if not request.user.is_authenticated %}
+<div class="w-50 ml-auto mr-auto border" id="loginregpanel">
+    <div class="m-3 p-3">
+        <form method='POST'>
+            <p>Login</p>
+            <div>
+                <label>Username: </label>
+                <input type="text" placeholder="Enter your username">
+            </div>
+            <div>
+                <label>Password: </label>
+                <input type="password" placeholder="Enter your password">
+            </div>
+        </form>
+    </div>
+    <div class="m-3 p-3">
+        <form method='POST'>
+            <p>Register</p>
+            <div>
+                <label>Username: </label>
+                <input type="text" placeholder="Enter your username">
+            </div>
+            <div>
+                <label>Email Address: </label>
+                <input type="password" placeholder="Enter your email">
+            </div>
+            <div>
+                <label>Password: </label>
+                <input type="password" placeholder="Enter a password">
+            </div>
+            <div>
+                <label>Password Confirmation: </label>
+                <input type="password" placeholder="Enter password again">
+            </div>
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block myscript %}
+<script>
+    function toggleLoginReg() {
+        $('#loginregpanel').fadeToggle()
+    }
+</script>
 {% endblock %}

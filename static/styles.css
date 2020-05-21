@@ -3,3 +3,16 @@
 .gbor {
     border: 3px solid gold;
 }
+
+a {
+    cursor: pointer;
+}
+
+#loginregpanel {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 50%;
+    transform: translateX(50%);
+
+}
