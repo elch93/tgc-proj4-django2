@@ -60,3 +60,31 @@ def delete_from_cart(request, product_id):
         messages.success(request, 'Item removed from cart.')
 
     return redirect(reverse(user_cart))
+
+
+def update_from_cart(request, product_id):
+    # retrieve cart
+    cart = request.session.get('cart', {})
+
+    if request.method == 'GET':
+
+        context = {
+            'update_quantity': cart[product_id]['quantity'],
+            'update_size': cart[product_id]['size'],
+            'product_name': cart[product_id]['name'],
+            'product_cost': cart[product_id]['cost'],
+            'product_id': product_id
+        }
+
+        return render(request, 'cart/update_cart.template.html', context)
+    if request.method == 'POST':
+        updated_quantity = int(request.POST['quantity'])
+        updated_size = request.POST['size']
+
+        if product_id in cart:
+            cart[product_id]['quantity'] = updated_quantity
+            cart[product_id]['size'] = updated_size
+
+            request.session['cart'] = cart
+
+        return redirect(reverse(user_cart))
