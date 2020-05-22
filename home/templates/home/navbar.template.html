@@ -46,7 +46,7 @@
                 <a class="nav-link" href="{%url 'account_logout'%}">Logout</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Shopping Bag</a>
+                <a class="nav-link" href="{%url 'view_cart'%}">Shopping Bag</a>
             </li>
             {% endif %}
             {% if request.user.is_superuser %}
