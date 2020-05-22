@@ -6,7 +6,9 @@
 <div class="row p-5">
     
     <div class="card p-3 m-3 w-40">
-      {{cart}}
+        {% for key, item in cart.items %}
+        <p>{{item.name}}</p>
+        <p>${{item.price}}</p>
     </div>
 </div>
 

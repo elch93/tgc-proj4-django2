@@ -23,11 +23,13 @@ def add_to_cart(request, product_id):
     if product_id not in cart:
         product = get_object_or_404(Product, pk=product_id)
         buying_quantity = request.get('quantity')
+        size = request.get('size')
 
         cart[product] = {
             'id': product_id,
             'name': product.name,
             'quantity': buying_quantity,
+            'size': size,
             'cost': product.price
         }
 
