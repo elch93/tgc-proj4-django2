@@ -23,6 +23,6 @@ def profile(request):
         updated_form = UserProfileForm(request.POST, instance=profile)
         if updated_form.is_valid():
             updated_form.save()
-            messages.success(request, f'Profile for {request.user.username} has been saved.')
+            messages.success(request, f'Profile for {request.user.username} has been updated.')
 
         return redirect(reverse(index))

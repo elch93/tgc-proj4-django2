@@ -1,21 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Brand Name</a>
+    <a class="navbar-brand" href="{% url 'homepage' %}">Brand Name</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+            <form class="form-inline" method="GET">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='q'>
+                <button class='rounded shadow-none border-dark' type="submit"><i class="fas fa-search"></i></button>
+            </form>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Products
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{% url 'view_products' category_selected='all' %}">All</a>
-                    <a class="dropdown-item" href="{% url 'view_products' category_selected='T-shirt' %}">T-shirt</a>
-                    <a class="dropdown-item" href="{% url 'view_products' category_selected='Long Sleeves' %}">Long Sleeves</a>
-                    <a class="dropdown-item" href="{% url 'view_products' category_selected='Outerwear' %}">Outerwear</a>
+                    <a class="dropdown-item" href="{% url 'view_products'%}?category=all">All</a>
+                    {% if categories %}
+                    {% for i in categories %}
+                    <a class="dropdown-item" href="{% url 'view_products'%}?category={{i.name}}">{{i.name}}</a>
+                    {% endfor %}
+                    {% endif %}
                 </div>
             </li>
             <li class="nav-item">

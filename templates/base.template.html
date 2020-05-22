@@ -16,6 +16,8 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
 
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
@@ -29,6 +31,7 @@
 
   <script src="/static/script.js"></script>
   <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+  
 
   <title>{% block title %} {% endblock %}</title>
   {% block head %} {% endblock %}
@@ -36,10 +39,8 @@
 
 <body>
   {% if messages %}
-  <div class='alert alert-success'>
-    <div>
+  <div class='alert alert-warning'>
       {% for message in messages %} {{ message }} {% endfor %}
-    </div>
   </div>
   {% endif %}
   {% block content %}

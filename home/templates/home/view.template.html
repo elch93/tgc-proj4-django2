@@ -1,13 +1,17 @@
 {% extends 'base.template.html' %}
 
 {% block content %}
+
 {% include 'home/navbar.template.html' %}
 
-<div class="row p-5">
-    <b>Products Created</b>
+<h3>{{current_category}}</h3>
+<div class="row p-2 justify-content-around">
+    {% if products_count %}
+    <p class="col-12">There are {{products_count}} results.</p>
+    {% endif %}
+    
     {% for i in products %}
-    {% if category_selected == i.category.name or category_selected == 'all' %}
-    <div class="card p-3 m-3 w-40">
+    <div class="col-3 border p-3">
         <p>{{i.name}} ${{i.price}}</p>
         <p>{{i.category}}</p>
         <p>Tags:
@@ -19,7 +23,6 @@
         <hr>
         <a href="{% url 'product_details' product_id=i.id %}">view details</a>
     </div>
-    {% endif %}
     {% endfor %}
 </div>
 

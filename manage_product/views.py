@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, HttpResponse, get_object
 from django.contrib.auth.decorators import login_required
 from .models import Product, Category, Tag
 from .forms import ProductForm, CategoryForm, TagForm
+from django.contrib import messages
 # Create your views here.
 
 
@@ -33,18 +34,21 @@ def index(request):
             created_item = pform.save(commit=False)
             created_item.creator = request.user
             pform.save()
+            messages.success(request, f'Product {created_item.name} has been created.')
 
         elif CategoryForm(request.POST).is_valid() and 'csubmit' in request.POST:
             cform = CategoryForm(request.POST)
             created_item = cform.save(commit=False)
             created_item.creator = request.user
             cform.save()
+            messages.success(request, f'Category {created_item.name} has been created.')
 
         elif TagForm(request.POST).is_valid() and 'tsubmit' in request.POST:
             tform = TagForm(request.POST)
             created_item = tform.save(commit=False)
             created_item.creator = request.user
             tform.save()
+            messages.success(request, f'Tag {created_item.name} has been created.')
 
         return redirect(reverse(index))
 
@@ -69,6 +73,7 @@ def delete(request, item_type, item_id):
     # delete item
     if request.method == 'POST':
         item.delete()
+        messages.success(request, f'{item.name} has been deleted.')
         return redirect(reverse(index))
 
 
@@ -110,4 +115,5 @@ def edit(request, item_type, item_id):
 
         if edited_form.is_valid():
             edited_form.save()
+            messages.success(request, f'{item.name} has been updated.')
         return redirect(reverse(index))
