@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'profiles',
     'reviews',
     'cart',
+    'checkout'
 ]
 
 MIDDLEWARE = [
@@ -149,7 +150,8 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
-
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

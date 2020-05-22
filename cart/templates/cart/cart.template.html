@@ -3,7 +3,7 @@
 {% block content %}
 {% include 'home/navbar.template.html' %}
 <b>Cart Details</b>
-<b>{{cart|length}}</b>
+<b>Number of Items in Cart: {{cart|length}}</b>
 <div class="container-fluid p-5">
     <div class="row">
         <div class="col-2">
@@ -25,7 +25,7 @@
             <b>Actions</b>
         </div>
     </div>
-    {% for key, item in cart.items %}
+    {% for key, item in cart.items %} 
     <div class="row">
         <div class="col-2">
             <p>{{item.name}}</p>

@@ -86,5 +86,6 @@ def update_from_cart(request, product_id):
             cart[product_id]['size'] = updated_size
 
             request.session['cart'] = cart
+            messages.success(request, 'Item has been updated in the cart.')
 
         return redirect(reverse(user_cart))
