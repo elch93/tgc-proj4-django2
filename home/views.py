@@ -5,9 +5,6 @@ from django.contrib import messages
 from django.db.models import Q
 # Create your views here.
 
-all_categories = Category.objects.all()
-
-
 def index(request):
     # search
     if request.GET:
@@ -26,16 +23,11 @@ def index(request):
 
                 context = {
                     'products': results,
-                    'categories': all_categories
                 }
 
                 return render(request, 'home/view.template.html', context)
 
-    context = {
-        'categories': all_categories
-    }
-
-    return render(request, 'home/index.template.html', context)
+    return render(request, 'home/index.template.html')
 
 
 def view_all(request):
@@ -68,7 +60,6 @@ def view_all(request):
 
                 context = {
                     'products': results,
-                    'categories': all_categories
                 }
 
                 return render(request, 'home/view.template.html', context)
@@ -83,7 +74,6 @@ def view_all(request):
         category_selected = request.GET['category']
 
     context = {
-        'categories': all_categories,
         'products': all_products,
         'current_category': category_selected,
         'current_sort': current_sort
@@ -109,8 +99,7 @@ def product_details(request, product_id):
                 results = Product.objects.filter(search)
 
                 context = {
-                    'products': results,
-                    'categories': all_categories
+                    'products': results
                 }
 
                 return render(request, 'home/view.template.html', context)

@@ -16,6 +16,7 @@
         <p>Tags:
             {% for j in product.tags.all %}<p>{{j.tagname}}</p>{% endfor %}
         </p>
+        <a href="{%url 'add_to_cart' product_id=product.id%}">Add To Cart</a>
         <a href="{%url 'review' product_id=product.id%}">Leave a Review</a>
         <hr>
     </div>

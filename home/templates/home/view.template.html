@@ -22,9 +22,8 @@
     <div class="col-3 border p-3">
         <p>{{i.name}} ${{i.price}}</p>
         <p>{{i.category.name}}</p>
-        <p>Tags:
-            {% for j in i.tags.all %}<p>{{j.name}}</p>{% endfor %}
-        </p>
+        <p>Tags: </p>
+        {% for j in i.tags.all %}<p>{{j.name}}</p>{% endfor %}
         <div class="w-50">
             <img class="img-fluid" src="{{ i.image.cdn_url }}-/crop/600x600/center/-/quality/lightest/" alt="">
         </div>

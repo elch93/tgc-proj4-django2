@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('profile/', include('profiles.urls')),
     path('review/', include('reviews.urls')),
+    path('cart/', include('cart.urls')),
 ]

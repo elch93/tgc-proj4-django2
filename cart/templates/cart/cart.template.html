@@ -1,0 +1,15 @@
+{% extends 'base.template.html' %}
+
+{% block content %}
+{% include 'home/navbar.template.html' %}
+<b>Cart Details</b>
+<div class="row p-5">
+    
+    <div class="card p-3 m-3 w-40">
+      {{cart}}
+    </div>
+</div>
+
+
+
+{% endblock %}
