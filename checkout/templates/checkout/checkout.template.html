@@ -1,0 +1,21 @@
+{% extends 'base.template.html' %}
+
+{% block content %}
+<!-- Stripe JavaScript Library -->
+<script src="https://js.stripe.com/v3/"></script>
+
+{% autoescape off %}
+<script>
+    var stripe = Stripe('{{public_key}}');
+    stripe.redirectToCheckout({
+      sessionId: '{{session_id}}'
+    }).then(function (result) {
+        
+    });
+    
+</script>
+
+{% endautoescape %}
+
+
+{% endblock %}
