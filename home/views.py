@@ -9,6 +9,7 @@ all_categories = Category.objects.all()
 
 
 def index(request):
+    # search
     if request.GET:
         if 'q' in request.GET:
             userquery = request.GET['q']
@@ -19,13 +20,12 @@ def index(request):
             else:
                 # case-insensitive search in product name or description
                 search = Q(name__icontains=userquery) | Q(
-                    description__icontains=userquery)
+                    description__icontains=userquery) | Q(
+                    tags__name__icontains=userquery)
                 results = Product.objects.filter(search)
-                results_count = results.count()
 
                 context = {
                     'products': results,
-                    'products_count': results_count,
                     'categories': all_categories
                 }
 
@@ -39,8 +39,20 @@ def index(request):
 
 
 def view_all(request):
-    # if user enter a search term on products page
+    # sort functionality
+    current_sort = 'name'
     if request.GET:
+        if 'sort' in request.GET:
+            sort = request.GET['sort']
+            if sort == 'alpha':
+                current_sort = 'name'
+            if sort == 'price':
+                current_sort = 'price'
+            if 'direction' in request.GET:
+                if request.GET['direction'] == 'desc':
+                    current_sort = f'-{current_sort}'
+
+        # if user enter a search term on products page
         if 'q' in request.GET:
             userquery = request.GET['q']
             if not userquery:
@@ -50,13 +62,12 @@ def view_all(request):
             else:
                 # case-insensitive search in product name or description
                 search = Q(name__icontains=userquery) | Q(
-                    description__icontains=userquery)
+                    description__icontains=userquery) | Q(
+                    tags__name__icontains=userquery)
                 results = Product.objects.filter(search)
-                results_count = results.count()
 
                 context = {
                     'products': results,
-                    'products_count': results_count,
                     'categories': all_categories
                 }
 
@@ -65,16 +76,17 @@ def view_all(request):
     if 'category' in request.GET and request.GET['category'] != 'all':
         category_selected = request.GET['category']
         all_products = Product.objects.filter(
-            category__name__contains=category_selected)
+            category__name__contains=category_selected).order_by(current_sort)
 
     else:
-        all_products = Product.objects.all()
+        all_products = Product.objects.all().order_by(current_sort)
         category_selected = request.GET['category']
 
     context = {
         'categories': all_categories,
         'products': all_products,
-        'current_category': category_selected
+        'current_category': category_selected,
+        'current_sort': current_sort
     }
 
     return render(request, 'home/view.template.html', context)
@@ -92,13 +104,12 @@ def product_details(request, product_id):
             else:
                 # case-insensitive search in product name or description
                 search = Q(name__icontains=userquery) | Q(
-                    description__icontains=userquery)
+                    description__icontains=userquery) | Q(
+                    tags__name__icontains=userquery)
                 results = Product.objects.filter(search)
-                results_count = results.count()
 
                 context = {
                     'products': results,
-                    'products_count': results_count,
                     'categories': all_categories
                 }
 

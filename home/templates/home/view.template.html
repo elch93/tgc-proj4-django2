@@ -5,10 +5,18 @@
 {% include 'home/navbar.template.html' %}
 
 <h3>{{current_category}}</h3>
+<h3>{{current_sort}}</h3>
+
+<select id='sort_products'>
+    <option value='default'>Sort By...</option>
+    <option value='alpha_asc' {% if current_sort == 'name'%} selected {% endif %}>Alphabetical(A-Z)</option>
+    <option value='alpha_desc' {% if current_sort == '-name'%} selected {% endif %}>Alphabetical(Z-A)</option>
+    <option value='price_asc' {% if current_sort == 'price'%} selected {% endif %}>Price(Lowest to Highest)</option>
+    <option value='price_desc' {% if current_sort == '-price'%} selected {% endif %}>Price(Highest to Lowest)</option>
+</select>
+
 <div class="row p-2 justify-content-around">
-    {% if products_count %}
-    <p class="col-12">There are {{products_count}} results.</p>
-    {% endif %}
+    <p class="col-12">There are {{products | length}} results.</p>
     
     {% for i in products %}
     <div class="col-3 border p-3">
@@ -28,4 +36,40 @@
 
 
 
+{% endblock %}
+
+{% block myscript %}
+<script>
+    $('#sort_products').change(function(){
+        let current_page = new URL(window.location);
+
+        let selectedVal = $(this).val();
+        
+        if (selectedVal != 'default') {
+            selectedVal = selectedVal.split('_');
+            let sort = selectedVal[0];
+            let direction = selectedVal[1];
+
+            current_page.searchParams.set('category', `{{current_category}}`)
+            current_page.searchParams.set('sort', sort);
+            current_page.searchParams.set('direction', direction);
+            window.location.replace(current_page)
+        }
+
+
+
+
+
+
+
+
+
+    })
+
+
+
+
+
+
+</script>
 {% endblock %}
