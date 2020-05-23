@@ -3,44 +3,41 @@
 {% block content %}
 
 {% include 'home/navbar.template.html' %}
-
-<div class="row p-5">
-    <b>Product Details</b>
-
-    <div class="card p-3 m-3 w-40">
-        <div class="w-50">
-            <img class="img-fluid" src="{{ product.image.cdn_url }}-/crop/600x600/center/-/quality/lightest/" alt="">
+<div class="row justify-content-start pl-5">
+    <div class="col-3 m-3 detailscard">
+        <div class="mb-3">
+            <img class="img-fluid" src="{{ product.image.cdn_url }}-/quality/lightest/" alt="">
         </div>
-        <p>{{product.name}} ${{product.price}}</p>
-        <p>{{product.description}}</p>
-        <p>{{product.category}}</p>
-        <p>Tags:
-            {% for j in product.tags.all %}<p>{{j.tagname}}</p>{% endfor %}
-        </p>
-
+        <p><b>{{product.name}}</b></p>
+        <p class="text-center">${{product.price}}</p>
+        {% for j in product.tags.all %}
+        <p class="text-danger">{{j.name}}</p>
+        {% endfor %}
+    </div>
+    <div class="col-5 mt-3 ordercard">
+        <div>
+            <p class="font-weight-bold">PRODUCT DESCRIPTION</p>
+            <p>{{product.description}}</p>
+        </div>
         <form method="POST" action="{%url 'add_to_cart' product_id=product.id%}">
             {%csrf_token%}
             <label class="mr-sm-2" for="select-size">Select Size:</label>
-            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="select-size" name="size">
+            <select class="custom-select mb-2 mr-sm-2 mb-sm-0 col-5" id="select-size" name="size">
                 <option selected>Choose...</option>
                 <option value="small">Small</option>
                 <option value="medium">Medium</option>
                 <option value="large">Large</option>
             </select>
-            <div class="form-group row">
-                <label for="select-qty" class="col-2 col-form-label">Select Quantity</label>
-                <div class="col-10">
+            <div class="form-group row mt-3 justify-content-start">
+                <label for="select-qty" class="col-4 pr-0 col-form-label">Select Quantity: </label>
+                <div class="col-4 p-0 m-0">
                     <input class="form-control" type="number" value="1" id="select-qty" name='quantity'>
                 </div>
             </div>
-            <button type="submit">Add To Cart</button>
+            <button type="submit">Add To Cart <i class="fas fa-shopping-cart"></i></button>
         </form>
-
+        <br>
         <a href="{%url 'review' product_id=product.id%}">Leave a Review</a>
-        <hr>
     </div>
 </div>
-
-
-
 {% endblock %}

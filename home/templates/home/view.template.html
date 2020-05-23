@@ -29,7 +29,7 @@
                 <p><b>{{i.name}}</b></p>
                 <p class="text-center">${{i.price}}</p>
                 {% for j in i.tags.all %}
-                <p>{{j.name}}</p>
+                <p class='text-danger'>{{j.name}}</p>
                 {% endfor %}
             </a>
         </div>
