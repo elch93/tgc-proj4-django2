@@ -1,4 +1,15 @@
-/* font-family: 'Roboto', sans-serif; */
+/* 
+font-family: 'Roboto', sans-serif;
+font-family: 'Squada One', cursive;
+ */
+/* 
+color schemes
+wine: #6f263d
+gold: #ffb81c
+navy: #041e42
+black: #000000
+white: #ffffff
+*/
 
 .gbor {
     border: 3px solid gold;
@@ -6,13 +17,68 @@
 
 a {
     cursor: pointer;
+    text-decoration: none !important;
+    color: #000000;
 }
 
-#loginregpanel {
-    display: none;
-    position: absolute;
-    top: 50px;
-    right: 50%;
-    transform: translateX(50%);
+a:hover {
+    color: #000000;
+}
 
+body {
+    font-family: 'Roboto', sans-serif;;
+}
+
+/* home page */
+header {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+header a {
+    color: #ffffff;
+    transition: ease-in-out 0.4s;
+}
+
+header a:hover {
+    color:  #ffb81c
+}
+
+#cavslogo {
+    height: 50px;
+}
+
+#brandtext {
+    font-family: 'Squada One', cursive;
+    font-size: 30px;
+}
+
+nav {
+    background-color: #ffffff;
+}
+
+#querybtn {
+    padding: 5px 10px;
+    border: none;
+    box-shadow: none;
+    background-color: #ffb81c;
+    transition: ease-in-out 0.4s;
+}
+
+#querybtn:hover {
+    background-color: #6f263d;
+    color: #ffffff;
+}
+
+nav .fa-shopping-cart {
+    font-size: 22px;
+    color: #000000;
+    transition: ease-in-out 0.4s;
+}
+
+#navbarNavDropdown a {
+    transition: ease-in-out 0.4s;
+}
+#navbarNavDropdown a:hover {
+    color: #6f263d;
 }

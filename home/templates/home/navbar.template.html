@@ -1,15 +1,18 @@
 <header>
     <div class='row m-0 p-2'>
         <div class="col-4">
-            <a class="" href="{% url 'homepage' %}">Brand Name</a>
+            <a href="{% url 'homepage' %}">
+                <img src="../static/images/cavstextwhite.png" id="cavslogo" alt="header logo">
+                <span class="ml-2" id="brandtext">TEAM SHOP</span>
+            </a>
         </div>
-        <div class="col-4">
-            <span>FREE SHIPPING ON ORDERS ABOVE $20</span>
+        <div class="col-4 pt-2 justify-content-center d-flex">
+            <span>FREE DELIVERY ON ORDERS ABOVE $20</span>
         </div>
-        <div class="col-4 d-flex justify-content-end">
+        <div class="col-4 d-flex justify-content-end pt-2">
             {% if not request.user.is_authenticated %}
-            <a class="ml-3" href="{%url 'account_login'%}">Login</a>
-            <a class="ml-3" href="{%url 'account_signup'%}">Register</a>
+            <a class="ml-3" href="{%url 'account_login'%}"><b>LOGIN</b></a>
+            <a class="ml-3" href="{%url 'account_signup'%}"><b>REGISTER</b></a>
             {% endif %}
             {% if request.user.is_authenticated %}
             <a class="ml-3" href="{%url 'profile'%}">Profile</a>
@@ -22,7 +25,7 @@
     </div>
 </header>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -52,10 +55,12 @@
         <ul class="navbar-nav ml-auto">
             <form class="form-inline" method="GET">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='q'>
-                <button class='rounded shadow-none border-dark' type="submit"><i class="fas fa-search"></i></button>
+                <button class='rounded' type="submit" id='querybtn'><i class="fas fa-search"></i></button>
             </form>
             <li class="nav-item">
-                <a class="nav-link" href="{%url 'view_cart'%}">CART</a>
+                <a class="nav-link" href="{%url 'view_cart'%}">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
             </li>
         </ul>
     </div>
