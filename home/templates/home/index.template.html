@@ -3,12 +3,33 @@
 {% block content %}
 {% include 'home/navbar.template.html' %}
 
-<div class="container-fluid">
+<div class="container-fluid" id='homepage'>
     <div class="row">
-        <div class="col-12" id='heroimg'>
-            
+        <div class="col-12 p-0 bg-dark">
+            <img src="../static/images/lebronfanscropped.jpg" id='heroimg'>
         </div>
     </div>
+    <footer class="row">
+        <div class="col-4 p-0 bg-dark p-3">
+            <p class="font-weight-bold">STAY CONNECTED</p>
+            <input type="text" placeholder="Enter Your Email">
+            <button class='ml-2' type="submit">Subscribe</button>
+        </div>
+        <div class="col-4 p-0 bg-dark p-3">
+            <p class="font-weight-bold">CONTACT US</p>
+            <p>Address: Cavaliers Team Shop
+                1 Center Court
+                Cleveland, OH 44115</p>
+            <p>Email: teamcavs@cavs.com</p>
+            <p>Phone: 1-800-252-6061</p>
+        </div>
+        <div class="col-4 p-0 bg-dark p-3">
+            <p class="font-weight-bold">Careers</p>
+            <p class="font-weight-bold">FAQs</p>
+            <p class="font-weight-bold">Privacy Policy</p>
+            <p class="font-weight-bold">Terms & Conditions</p>
+        </div>
+    </footer>
 </div>
 
 {% endblock %}

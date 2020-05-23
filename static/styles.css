@@ -26,7 +26,8 @@ a:hover {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 
 /* home page */
@@ -55,6 +56,7 @@ header a:hover {
 
 nav {
     background-color: #ffffff;
+    font-weight: 400;
 }
 
 #querybtn {
@@ -86,10 +88,31 @@ nav .fa-shopping-cart {
     background-color: #ffb81c;
 }
 
-#heroimg {
-    background-image: url(../static/images/lebronfans.jpg);
-    height: 520px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
+nav, header {
+    z-index: 3;
+    position: relative;
 }
+
+#heroimg {
+    width: 100%;
+    opacity: 0.8;
+    z-index: 0;
+    top: 20px;
+}
+
+#homepage {
+    color: #ffffff;
+}
+
+footer button {
+    border: none;
+    border-radius: 5px;
+    background-color: #ffb81c;
+    padding: 3px 8px;
+}
+
+footer {
+    border-top: 3px solid #ffb81c;
+}
+
+
