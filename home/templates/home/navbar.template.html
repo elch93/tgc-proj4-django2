@@ -1,59 +1,69 @@
+<header>
+    <div class='row m-0 p-2'>
+        <div class="col-4">
+            <a class="" href="{% url 'homepage' %}">Brand Name</a>
+        </div>
+        <div class="col-4">
+            <span>FREE SHIPPING ON ORDERS ABOVE $20</span>
+        </div>
+        <div class="col-4 d-flex justify-content-end">
+            {% if not request.user.is_authenticated %}
+            <a class="ml-3" href="{%url 'account_login'%}">Login</a>
+            <a class="ml-3" href="{%url 'account_signup'%}">Register</a>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+            <a class="ml-3" href="{%url 'profile'%}">Profile</a>
+            <a class="ml-3" href="{%url 'account_logout'%}">Logout</a>
+            {% endif %}
+            {% if request.user.is_superuser %}
+            <a class="ml-3" href="{%url 'admin:index'%}">Admin</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'homepage' %}">Brand Name</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+            <li>
+                <a class="ml-3" href="{%url 'profile'%}">ALL</a>
+            </li>
+            <li>
+                <a class="ml-3" href="{%url 'profile'%}">TOPS</a>
+            </li>
+            <li>
+                <a class="ml-3" href="{%url 'account_logout'%}">OUTERWEAR</a>
+            </li>
+            <li>
+                <a class="ml-3" href="{%url 'profile'%}">BOTTOMS</a>
+            </li>
+            <li>
+                <a class="ml-3" href="{%url 'account_logout'%}">ACCESSORIES</a>
+            </li>
+            <li>
+                <a class="ml-3" href="{%url 'account_logout'%}">SALE</a>
+            </li>
+        </ul>
         <ul class="navbar-nav ml-auto">
             <form class="form-inline" method="GET">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='q'>
                 <button class='rounded shadow-none border-dark' type="submit"><i class="fas fa-search"></i></button>
             </form>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Products
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{% url 'view_products'%}?category=all">All</a>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'view_cart'%}">CART</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- <a class="dropdown-item" href="{% url 'view_products'%}?category=all">All</a>
                     {% if categories %}
                     {% for i in categories %}
                     <a class="dropdown-item" href="{% url 'view_products'%}?category={{i.name}}">{{i.name}}</a>
                     {% endfor %}
-                    {% endif %}
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
-            </li>
-            {% if not request.user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'account_login'%}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'account_signup'%}">Register</a>
-            </li>
-            {% endif %}
-            {% if request.user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'profile'%}">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'account_logout'%}">Logout</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'view_cart'%}">Shopping Bag</a>
-            </li>
-            {% endif %}
-            {% if request.user.is_superuser %}
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'admin:index'%}">Admin</a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
-</nav>
+                    {% endif %} -->
