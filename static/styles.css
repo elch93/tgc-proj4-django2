@@ -95,8 +95,7 @@ nav, header {
 
 #heroimg {
     width: 100%;
-    opacity: 0.8;
-    z-index: 0;
+    opacity: 0.7;
     top: 20px;
 }
 
@@ -115,4 +114,56 @@ footer {
     border-top: 3px solid #ffb81c;
 }
 
+footer i {
+    font-size: 30px;
+}
 
+#herotext1 {
+    position: absolute;
+    top: 170px;
+    left: 60px;
+    font-size: 50px;
+    font-family: 'Squada One', cursive;
+    letter-spacing: 3px;
+}
+
+#herotext2 {
+    position: absolute;
+    top: 230px;
+    left: 60px;
+    font-size: 20px;
+}
+
+#herotext3 {
+    position: absolute;
+    top: 270px;
+    right: 120px;
+    font-size: 20px;
+}
+
+#herotext3 button {
+    background-color: #ffb81c;
+    border-radius: 5px;
+    border: solid #ffb81c 2px;
+    padding: 5px 10px;
+    font-weight: 900;
+}
+
+/* view products page */
+#viewpage {
+    background-color: #6f263d;
+    color: #ffb81c;
+}
+
+#viewpage h3 {
+    text-transform: capitalize;
+}
+
+.resultcard {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px 10px;
+    color: #000000;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+    border: 5px solid #ffb81c;
+}

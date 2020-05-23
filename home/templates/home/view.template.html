@@ -1,37 +1,39 @@
 {% extends 'base.template.html' %}
 
+<h3>{{current_sort}}</h3>
 {% block content %}
 
 {% include 'home/navbar.template.html' %}
 
-<h3>{{current_category}}</h3>
-<h3>{{current_sort}}</h3>
-
-<select id='sort_products'>
-    <option value='default'>Sort By...</option>
-    <option value='alpha_asc' {% if current_sort == 'name'%} selected {% endif %}>Alphabetical(A-Z)</option>
-    <option value='alpha_desc' {% if current_sort == '-name'%} selected {% endif %}>Alphabetical(Z-A)</option>
-    <option value='price_asc' {% if current_sort == 'price'%} selected {% endif %}>Price(Lowest to Highest)</option>
-    <option value='price_desc' {% if current_sort == '-price'%} selected {% endif %}>Price(Highest to Lowest)</option>
-</select>
-
-<div class="row p-2 justify-content-around">
-    <p class="col-12">There are {{products | length}} results.</p>
-    
-    {% for i in products %}
-    <div class="col-3 border p-3">
-        <p>{{i.name}} ${{i.price}}</p>
-        <p>{{i.category.name}}</p>
-        <p>Tags: </p>
-        {% for j in i.tags.all %}<p>{{j.name}}</p>{% endfor %}
-        <div class="w-50">
-            <img class="img-fluid" src="{{ i.image.cdn_url }}-/crop/600x600/center/-/quality/lightest/" alt="">
+<div class="container-fluid" id='viewpage'>
+    <div class="row justify-content-around">
+        <div class="col-12 pl-3">
+            <label><b>Sort By: </b></label>
+            <select class='ml-2' id='sort_products'>
+                <option value='alpha_asc' {% if current_sort == 'name'%} selected {% endif %}>Alphabetical(A-Z)</option>
+                <option value='alpha_desc' {% if current_sort == '-name'%} selected {% endif %}>Alphabetical(Z-A)
+                </option>
+                <option value='price_asc' {% if current_sort == 'price'%} selected {% endif %}>Price(Lowest to Highest)
+                </option>
+                <option value='price_desc' {% if current_sort == '-price'%} selected {% endif %}>Price(Highest to
+                    Lowest)
+                </option>
+            </select>
+            <p>There are {{products | length}} results.</p>
         </div>
-        <hr>
-        <a href="{% url 'product_details' product_id=i.id %}">view details</a>
+        {% for i in products %}
+        <div class="col-3 m-3 resultcard">
+            <div class="mb-3">
+                <img class="img-fluid" src="{{ i.image.cdn_url }}-/quality/lightest/" alt="">
+            </div>
+            <p><b>{{i.name}}</b></p>
+            <p class="text-center">${{i.price}}</p>
+            {% for j in i.tags.all %}<p>{{j.name}}</p>{% endfor %}
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
+
 
 
 
@@ -39,11 +41,12 @@
 
 {% block myscript %}
 <script>
-    $('#sort_products').change(function(){
+    //sort using parameters in url
+    $('#sort_products').change(function () {
         let current_page = new URL(window.location);
 
         let selectedVal = $(this).val();
-        
+
         if (selectedVal != 'default') {
             selectedVal = selectedVal.split('_');
             let sort = selectedVal[0];
@@ -55,20 +58,33 @@
             window.location.replace(current_page)
         }
 
+    })
 
+    $(function () {
+        //page indicator
+        let current_category = '{{current_category}}'
+        
+        if (current_category == 'all') {
+            $('nav a').eq(0).css('background-color','#ffb81c')
+        }
 
+        if (current_category == 'Top') {
+            $('nav a').eq(1).css('background-color','#ffb81c')
+        }
 
+        if (current_category == 'Outerwear') {
+            $('nav a').eq(2).css('background-color','#ffb81c')
+        }
 
+        if (current_category == 'Bottom') {
+            $('nav a').eq(3).css('background-color','#ffb81c')
+        }
 
-
+        if (current_category == 'Accessory') {
+            $('nav a').eq(4).css('background-color','#ffb81c')
+        }
 
 
     })
-
-
-
-
-
-
 </script>
 {% endblock %}

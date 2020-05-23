@@ -15,11 +15,11 @@
             <a class="ml-3" href="{%url 'account_signup'%}"><b>REGISTER</b></a>
             {% endif %}
             {% if request.user.is_authenticated %}
-            <a class="ml-3" href="{%url 'profile'%}">Profile</a>
-            <a class="ml-3" href="{%url 'account_logout'%}">Logout</a>
+            <a class="ml-3" href="{%url 'profile'%}"><b>PROFILE</b></a>
+            <a class="ml-3" href="{%url 'account_logout'%}"><b>LOGOUT</b></a>
             {% endif %}
             {% if request.user.is_superuser %}
-            <a class="ml-3" href="{%url 'admin:index'%}">Admin</a>
+            <a class="ml-3" href="{%url 'admin:index'%}"><b>ADMIN</b></a>
             {% endif %}
         </div>
     </div>
@@ -34,22 +34,22 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
             <li>
-                <a href="{%url 'profile'%}">ALL</a>
+                <a href="{%url 'view_products'%}?category=all">ALL</a>
             </li>
             <li>
-                <a href="{%url 'profile'%}">TOPS</a>
+                <a href="{%url 'view_products'%}?category=Top">TOPS</a>
             </li>
             <li>
-                <a href="{%url 'account_logout'%}">OUTERWEAR</a>
+                <a href="{%url 'view_products'%}?category=Outerwear">OUTERWEAR</a>
             </li>
             <li>
-                <a href="{%url 'profile'%}">BOTTOMS</a>
+                <a href="{%url 'view_products'%}?category=Bottom">BOTTOMS</a>
             </li>
             <li>
-                <a href="{%url 'account_logout'%}">ACCESSORIES</a>
+                <a href="{%url 'view_products'%}?category=Accessory">ACCESSORIES</a>
             </li>
             <li>
-                <a href="{%url 'account_logout'%}">SALE</a>
+                <a href="{%url 'view_products'%}">SALE</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
