@@ -3,23 +3,34 @@
 {% block content %}
 {% include 'home/navbar.template.html' %}
 
-<br>
-- Welcome page
-<br>
-- View Products
-<br>
-- View About
-<br>
-- Account creation/login 
-<br>
-- Shopping cart 
-<br>
-<br>
-- Admin page
-<br>
-<br>
-- Contact Us footer
-<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12" id="carouselcontainer">
+            <div class="mycarousel pl-5 pt-5">
+                <p>1st</p>
+            </div>
+            <div class="mycarousel pl-5 pt-5">
+                <p>2nd</p>
+            </div>
+            <div class="mycarousel pl-5 pt-5">
+                <p>3rd</p>
+            </div>
+            <div id="nmnxt">
+                <a id="next"><i class="far fa-arrow-alt-circle-right"></i></a>
+            </div>
+            <div id="nmprev">
+                <a id="prev"><i class="far fa-arrow-alt-circle-left"></i></a>
+            </div>
+            <div id="icontainer">
+                <span class="cindicator"></span>
+                <span class="cindicator"></span>
+                <span class="cindicator"></span>
+                <span class="cindicator"></span>
+                <span class="cindicator"></span>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 

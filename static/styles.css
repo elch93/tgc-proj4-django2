@@ -76,9 +76,41 @@ nav .fa-shopping-cart {
     transition: ease-in-out 0.4s;
 }
 
-#navbarNavDropdown a {
-    transition: ease-in-out 0.4s;
-}
 #navbarNavDropdown a:hover {
     color: #6f263d;
+    border-bottom: #ffb81c solid 3px;
+}
+
+#carouselcontainer {
+    color: #000000;
+}
+
+#icontainer{
+    position: absolute;
+    bottom:20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cindicator {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.4s ease;
+  }
+  
+
+#carouselcontainer i {
+    cursor: pointer;
+    font-size: 20px;
+    margin: 5px;
+}
+
+#carouselcontainer p {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
 }
