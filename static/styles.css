@@ -52,6 +52,7 @@ header a:hover {
 #brandtext {
     font-family: 'Squada One', cursive;
     font-size: 30px;
+    color: #ffb81c;
 }
 
 nav {
@@ -95,7 +96,7 @@ nav, header {
 
 #heroimg {
     width: 100%;
-    opacity: 0.7;
+    opacity: 0.5;
     top: 20px;
 }
 
@@ -123,8 +124,6 @@ footer i {
     top: 170px;
     left: 60px;
     font-size: 50px;
-    font-family: 'Squada One', cursive;
-    letter-spacing: 3px;
 }
 
 #herotext2 {
@@ -166,4 +165,18 @@ footer i {
     color: #000000;
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
     border: 5px solid #ffb81c;
+    transition: ease-in-out 0.4s;
+}
+
+.resultcard:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#backtotop {
+    position: fixed;
+    top: 500px;
+    right: 20px;
+    font-size: 30px;
+    color: #ffffff;
 }
