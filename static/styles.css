@@ -110,7 +110,6 @@ nav, header {
 
 #heroimg {
     width: 100%;
-    opacity: 0.5;
     top: 20px;
 }
 
@@ -135,9 +134,10 @@ footer i {
 
 #herotext1 {
     position: absolute;
-    top: 200px;
+    top: 300px;
     left: 60px;
-    font-size: 50px;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 #herotext2 {
@@ -154,13 +154,15 @@ footer i {
     font-size: 20px;
 }
 
-#herotext3 button {
+#herotext1 a {
     background-color: #ffb81c;
     border-radius: 5px;
     border: solid #ffb81c 2px;
     padding: 5px 10px;
     font-weight: 900;
-    color: #ffffff;
+    font-size: 22px;
+    margin-top: 10px;
+    color: #000000;
 }
 
 /* view products page */
