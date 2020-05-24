@@ -3,7 +3,6 @@
 {% block content %}
 
 {% include 'home/navbar.template.html' %}
-
 <div class="container-fluid" id='viewpage' name='#top'>
     <div class="row justify-content-start pb-5">
         <div class="col-12 pl-3 pt-3">
@@ -71,6 +70,7 @@
     $(function () {
         //page indicator
         let current_category = '{{current_category}}'
+        let current_tag = '{{current_tag}}'
 
         if (current_category == 'all') {
             $('nav a').eq(0).css('background-color', '#ffb81c')
@@ -90,6 +90,11 @@
 
         if (current_category == 'Accessory') {
             $('nav a').eq(4).css('background-color', '#ffb81c')
+        }
+
+        if (current_tag == 'Sale') {
+            $('nav a').eq(5).css('background-color', '#ffb81c')
+            $('nav a').eq(0).css('background-color', '#ffffff')
         }
 
 

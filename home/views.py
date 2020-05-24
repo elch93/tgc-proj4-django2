@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.db.models import Q
 # Create your views here.
 
+
 def index(request):
     # search
     if request.GET:
@@ -33,6 +34,8 @@ def index(request):
 def view_all(request):
     # sort functionality
     current_sort = 'name'
+    current_tag = None
+
     if request.GET:
         if 'sort' in request.GET:
             sort = request.GET['sort']
@@ -64,19 +67,28 @@ def view_all(request):
 
                 return render(request, 'home/view.template.html', context)
 
+    if 'tag' in request.GET:
+        if request.GET['tag'] == 'Sale':
+            current_tag = request.GET['tag']
+            category_selected = 'all'
+
+            all_products = Product.objects.filter(
+                tags__name__contains=current_tag).order_by(current_sort)
+
     if 'category' in request.GET and request.GET['category'] != 'all':
         category_selected = request.GET['category']
         all_products = Product.objects.filter(
             category__name__contains=category_selected).order_by(current_sort)
 
-    else:
+    if 'category' in request.GET and request.GET['category'] == 'all':
         all_products = Product.objects.all().order_by(current_sort)
-        category_selected = request.GET['category']
+        category_selected = 'all'
 
     context = {
         'products': all_products,
         'current_category': category_selected,
-        'current_sort': current_sort
+        'current_sort': current_sort,
+        'current_tag': current_tag
     }
 
     return render(request, 'home/view.template.html', context)

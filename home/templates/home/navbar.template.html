@@ -49,7 +49,7 @@
                 <a href="{%url 'view_products'%}?category=Accessory">ACCESSORIES</a>
             </li>
             <li>
-                <a href="{%url 'view_products'%}">SALE</a>
+                <a href="{%url 'view_products'%}?tag=Sale">SALE</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -65,10 +65,3 @@
         </ul>
     </div>
 </nav>
-
-<!-- <a class="dropdown-item" href="{% url 'view_products'%}?category=all">All</a>
-                    {% if categories %}
-                    {% for i in categories %}
-                    <a class="dropdown-item" href="{% url 'view_products'%}?category={{i.name}}">{{i.name}}</a>
-                    {% endfor %}
-                    {% endif %} -->

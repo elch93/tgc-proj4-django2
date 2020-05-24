@@ -21,18 +21,17 @@
         </div>
         <form method="POST" action="{%url 'add_to_cart' product_id=product.id%}">
             {%csrf_token%}
-            <label class="mr-sm-2" for="select-size">Select Size:</label>
-            <select class="custom-select mb-2 mr-sm-2 mb-sm-0 col-5" id="select-size" name="size">
-                <option selected>Choose...</option>
-                <option value="small">Small</option>
-                <option value="medium">Medium</option>
-                <option value="large">Large</option>
-            </select>
-            <div class="form-group row mt-3 justify-content-start">
-                <label for="select-qty" class="col-4 pr-0 col-form-label">Select Quantity: </label>
-                <div class="col-4 p-0 m-0">
-                    <input class="form-control" type="number" value="1" id="select-qty" name='quantity'>
-                </div>
+            <div>
+                <label class="mr-sm-2" for="select-size">Select Size:</label>
+                <select id="select-size" name="size">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+            <div class="mb-2">
+                <label class="mr-sm-2" for="select-qty">Select Quantity:</label>
+                <input type="number" value="1" id='select-qty' name="quantity">
             </div>
             <button type="submit">Add To Cart <i class="fas fa-shopping-cart"></i></button>
         </form>
