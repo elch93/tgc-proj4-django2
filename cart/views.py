@@ -12,12 +12,12 @@ def user_cart(request):
 
     subtotal = 0
     delivery_fee = Decimal('10.00')
-    
 
     for key, item in cart.items():
         print(Decimal(item['unit_cost']))
         line_total = item['quantity']*Decimal(item['unit_cost'])
         subtotal += line_total
+
 
     if subtotal >= 20:
         delivery_fee = Decimal('0.00')
@@ -28,7 +28,7 @@ def user_cart(request):
         'cart': cart,
         'subtotal': subtotal,
         'delivery_fee': delivery_fee,
-        'total': total
+        'total': total,
     }
 
     return render(request, 'cart/cart.template.html', context)
@@ -57,7 +57,8 @@ def add_to_cart(request, product_id):
                 'name': product.name,
                 'quantity': buying_quantity,
                 'size': size,
-                'unit_cost': str(product.price)
+                'unit_cost': str(product.price),
+                'product_image': product.image.cdn_url
             }
             messages.success(
                 request, f"{product.name} has been added to your cart.")
