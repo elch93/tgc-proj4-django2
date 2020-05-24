@@ -310,3 +310,17 @@ footer i {
     transition: ease-in-out 0.4s;
     color: #ffffff;
 }
+
+/* login/register page */
+#loginpage .login button {
+    background-color: #ffb81c;
+    border-radius: 5px;
+    border: solid #ffb81c 2px;
+    padding: 5px 10px;
+    font-weight: 900;
+    transition: ease-in-out 0.4s;
+}
+
+#loginpage .login .requiredField {
+    font-weight: bold;
+}
