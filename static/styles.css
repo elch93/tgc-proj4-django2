@@ -16,11 +16,11 @@ white: #ffffff
 }
 
 .border-btm-wine {
-    border-bottom:3px solid #6f263d ;
+    border-bottom: 3px solid #6f263d;
 }
 
 .border-btm-gold {
-    border-bottom:3px solid  #ffb81c ;
+    border-bottom: 3px solid #ffb81c;
 }
 
 a {
@@ -38,7 +38,8 @@ body {
     font-weight: 300;
 }
 
-html,body {
+html,
+body {
     padding: 0px;
     margin: 0px;
     overflow-x: hidden;
@@ -56,7 +57,7 @@ header a {
 }
 
 header a:hover {
-    color:  #ffb81c
+    color: #ffb81c
 }
 
 #cavslogo {
@@ -103,7 +104,8 @@ nav .fa-shopping-cart {
     background-color: #ffb81c;
 }
 
-nav, header {
+nav,
+header {
     z-index: 3;
     position: relative;
 }
@@ -135,7 +137,7 @@ footer i {
 #herotext1 {
     position: absolute;
     top: 300px;
-    right: 80px;
+    right: 120px;
     font-size: 40px;
     font-weight: bold;
     z-index: 6;
@@ -149,7 +151,7 @@ footer i {
 }
 
 
-#herotext2 p{
+#herotext2 p {
     margin-top: -10px;
 }
 
@@ -181,7 +183,7 @@ footer i {
     border-radius: 10px;
     padding: 15px 10px;
     color: #000000;
-    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
     border: 5px solid #ffb81c;
     transition: ease-in-out 0.4s;
 }
@@ -209,7 +211,8 @@ footer i {
     transition: ease-in-out 0.4s;
 }
 
-.ordercard button, .ordercard a {
+.ordercard button,
+.ordercard a {
     background-color: #ffb81c;
     border-radius: 5px;
     border: solid #ffb81c 2px;
@@ -219,7 +222,8 @@ footer i {
     color: #ffffff;
 }
 
-.ordercard button:hover, .ordercard a:hover {
+.ordercard button:hover,
+.ordercard a:hover {
     background-color: #6f263d;
     color: #ffffff;
 }
@@ -252,7 +256,7 @@ footer i {
 
 #deletecartpanel {
     position: absolute;
-    top:0px;
+    top: 0px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -284,7 +288,7 @@ footer i {
 /* profile page */
 #updateprofileform {
     position: absolute;
-    top:0px;
+    top: 0px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -294,8 +298,8 @@ footer i {
 }
 
 #updateprofileform form {
-    background-color:#ffffff;
-    margin:10px auto;
+    background-color: #ffffff;
+    margin: 10px auto;
     width: 450px;
     z-index: 6;
     text-align: left;
@@ -312,7 +316,9 @@ footer i {
 }
 
 /* login/register page */
-#loginpage .login button, #resetbtn, #registerpage button{
+#loginpage .login button,
+#resetbtn,
+#registerpage button {
     background-color: #ffb81c;
     border-radius: 5px;
     border: solid #ffb81c 2px;
@@ -321,7 +327,22 @@ footer i {
     transition: ease-in-out 0.4s;
 }
 
-#loginpage .login .requiredField, #resetpage .password_reset .requiredField, #registerpage form label {
+#loginpage .login .requiredField,
+#resetpage .password_reset .requiredField,
+#registerpage form label {
     font-weight: bold;
 }
 
+/* review page */
+#reviewpage form label {
+    font-weight: bold;
+}
+
+#reviewpage button {
+    background-color: #ffb81c;
+    border-radius: 5px;
+    border: solid #ffb81c 2px;
+    padding: 5px 10px;
+    font-weight: 900;
+    transition: ease-in-out 0.4s;
+}

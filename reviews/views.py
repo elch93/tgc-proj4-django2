@@ -10,10 +10,13 @@ from django.contrib import messages
 @login_required
 def review(request, product_id):
     if request.method == 'GET':
+        product = get_object_or_404(Product, pk=product_id)
+
         review_form = ReviewForm()
 
         context = {
-            'review_form': review_form
+            'review_form': review_form,
+            'product':product
         }
 
         return render(request, 'reviews/review.template.html', context)
@@ -27,4 +30,4 @@ def review(request, product_id):
             messages.success(
                 request, f'Review for {review_form.product.name} has been saved.')
 
-            return redirect(reverse(review))
+            return redirect('/products/details/' + str(product_id))

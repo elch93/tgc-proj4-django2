@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from manage_product.models import Product, Category
 from django.contrib import messages
 from django.db.models import Q
+from reviews.models import Review
 # Create your views here.
 
 

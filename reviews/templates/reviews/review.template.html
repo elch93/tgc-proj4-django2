@@ -4,22 +4,23 @@
 {% block title %} Review {% endblock %}
 
 {% block content %}
+{% include 'home/navbar.template.html' %}
 
-{% if messages %}  
-        <div class='alert alert-success'>    
-            <div>
-                {% for message in messages %} {{ message }} {% endfor %}
-            </div>
+<div class="row justify-content-center pt-3" id='reviewpage'>
+    <div class="col-3">
+        <p><b>{{product.name}}</b></p>
+        <div class="mb-3">
+            <img class="img-fluid" src="{{ product.image.cdn_url }}-/quality/lightest/" alt="">
         </div>
-{% endif %}
-
-<div class="row">
-    <form class="w-50 ml-auto mr-auto border m-3 p-3" method="POST">
-        {%csrf_token%}
-        <u>update profile details</u>
-        {{ review_form | crispy}}
-        <input type="submit">
-    </form>
+    </div>
+    <div class="col-6">
+        <form class="w-60 ml-auto mr-auto border p-3" method="POST">
+            {%csrf_token%}
+            <u><b>Leave a Review</b></u>
+            {{ review_form | crispy}}
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
 </div>
     
 
