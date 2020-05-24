@@ -312,7 +312,7 @@ footer i {
 }
 
 /* login/register page */
-#loginpage .login button {
+#loginpage .login button, #resetbtn, #registerpage button{
     background-color: #ffb81c;
     border-radius: 5px;
     border: solid #ffb81c 2px;
@@ -321,6 +321,7 @@ footer i {
     transition: ease-in-out 0.4s;
 }
 
-#loginpage .login .requiredField {
+#loginpage .login .requiredField, #resetpage .password_reset .requiredField, #registerpage form label {
     font-weight: bold;
 }
+

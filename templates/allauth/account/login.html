@@ -8,6 +8,9 @@
 {% block content %}
 {% include 'home/navbar.template.html' %}
 <div class="row p-5" id="loginpage">
+  <div class="col-12">
+    <h1>{% trans "Log In" %}</h1>
+  </div>
   <div class="col-4">
     <form class="login" method="POST" action="{% url 'account_login' %}">
       {% csrf_token %}
