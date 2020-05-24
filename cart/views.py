@@ -12,11 +12,13 @@ def user_cart(request):
 
     subtotal = 0
     delivery_fee = Decimal('10.00')
+    total_qty = 0
 
     for key, item in cart.items():
         print(Decimal(item['unit_cost']))
         line_total = item['quantity']*Decimal(item['unit_cost'])
         subtotal += line_total
+        total_qty += item['quantity']
 
 
     if subtotal >= 20:
@@ -29,6 +31,7 @@ def user_cart(request):
         'subtotal': subtotal,
         'delivery_fee': delivery_fee,
         'total': total,
+        'total_quantity': total_qty
     }
 
     return render(request, 'cart/cart.template.html', context)
