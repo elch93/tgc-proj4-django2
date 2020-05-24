@@ -1,43 +1,46 @@
 {% extends 'base.template.html' %}
 
 {% block content %}
-<b>Update Item in Cart</b>
-<div class="container-fluid p-5">
-    <div class="row">
-        <div class="col-2">
+{% include 'home/navbar.template.html' %}
+<div class="container-fluid p-5" id="updatepage">
+    <a href="{%url 'view_cart'%}"><i class="fas fa-chevron-circle-left"></i> Back to Cart</a>
+    <div class="row mt-2 justify-content-center">
+        <div class="col-3">
             <b>Item</b>
         </div>
         <div class="col-2">
             <b>Unit Cost</b>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <b>Actions</b>
         </div>
     </div>
-    <div class="row">
-        <div class="col-2">
-            <p>{{product_name}}</p>
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <p><b>{{product_name}}</b></p>
+            <div class="mb-3">
+                <img class="img-fluid" src="{{ product.image.cdn_url }}-/quality/lightest/" alt="">
+            </div>
         </div>
         <div class="col-2">
-            <p>{{product_cost}}</p>
+            <p>${{product_cost}}</p>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <form method="POST" action="{% url 'update_from_cart' cart_item_id=cart_item_id %}">
                 {%csrf_token%}
-                <label class="mr-sm-2" for="select-size">Select Size:</label>
-                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="select-size" name="size">
-                    <option selected>Choose...</option>
-                    <option value="small" {%if update_size == 'small' %} selected {%endif%}>Small</option>
-                    <option value="medium" {%if update_size == 'medium' %} selected {%endif%}>Medium</option>
-                    <option value="large" {%if update_size == 'large' %} selected {%endif%}>Large</option>
-                </select>
-                <div class="form-group row">
-                    <label for="select-qty" class="col-2 col-form-label">Select Quantity</label>
-                    <div class="col-10">
-                        <input class="form-control" type="number" value='{{update_quantity}}' id="select-qty" name='quantity'>
-                    </div>
+                <div class='mt-2 mb-2'>
+                    <label class="mr-sm-2" for="select-size">Select Size:</label>
+                    <select id="select-size" name="size">
+                        <option value="small" {%if update_size == 'small' %} selected {%endif%}>Small</option>
+                        <option value="medium" {%if update_size == 'medium' %} selected {%endif%}>Medium</option>
+                        <option value="large" {%if update_size == 'large' %} selected {%endif%}>Large</option>
+                    </select>
                 </div>
-                <button type="submit">Update To Cart</button>
+                <div class='mt-2 mb-2'>
+                    <label for="select-qty">Select Quantity: </label>
+                    <input type="number" value='{{update_quantity}}' id="select-qty" name='quantity'>
+                </div>
+                <button type="submit">Update Item</button>
             </form>
         </div>
     </div>

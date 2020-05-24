@@ -9,7 +9,11 @@ import uuid
 
 def user_cart(request):
     cart = request.session.get('cart', {})
-    print(cart)
+
+    subtotal = 0
+
+    for key, item in cart.items():
+        print(item['quantity'], item['unit_cost'])
 
     context = {
         'cart': cart
@@ -41,7 +45,7 @@ def add_to_cart(request, product_id):
                 'name': product.name,
                 'quantity': buying_quantity,
                 'size': size,
-                'cost': float(product.price)
+                'unit_cost': float(product.price)
             }
             messages.success(
                 request, f"{product.name} has been added to your cart.")
@@ -73,6 +77,8 @@ def delete_from_cart(request, cart_item_id):
 def update_from_cart(request, cart_item_id):
     # retrieve cart
     cart = request.session.get('cart', {})
+    product_selected = get_object_or_404(
+        Product, pk=cart[cart_item_id]['product_id'])
 
     if request.method == 'GET':
 
@@ -80,9 +86,10 @@ def update_from_cart(request, cart_item_id):
             'update_quantity': cart[cart_item_id]['quantity'],
             'update_size': cart[cart_item_id]['size'],
             'product_name': cart[cart_item_id]['name'],
-            'product_cost': cart[cart_item_id]['cost'],
-            'product_id': cart[cart_item_id]['id'],
-            'cart_item_id': cart_item_id
+            'product_cost': cart[cart_item_id]['unit_cost'],
+            'product_id': cart[cart_item_id]['product_id'],
+            'cart_item_id': cart_item_id,
+            'product': product_selected
         }
 
         return render(request, 'cart/update_cart.template.html', context)
