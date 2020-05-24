@@ -273,4 +273,14 @@ footer i {
     margin:10px auto;
     width: 450px;
     z-index: 6;
+    text-align: left;
+}
+
+#updateprofileform form button {
+    background-color: #ffb81c;
+    border-radius: 5px;
+    border: solid #ffb81c 2px;
+    padding: 5px 10px;
+    font-weight: 900;
+    transition: ease-in-out 0.4s;
 }

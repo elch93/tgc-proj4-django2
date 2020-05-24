@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
 from django.contrib import messages
-from home.views import index
 # Create your views here.
 
 
@@ -20,10 +19,10 @@ def profile(request):
         return render(request, 'profiles/profile.template.html', context)
 
     if request.method == 'POST':
-        profile = get_object_or_404(UserProfile, user=request.user)
-        updated_form = UserProfileForm(request.POST, instance=profile)
+        editing_profile = get_object_or_404(UserProfile, user=request.user)
+        updated_form = UserProfileForm(request.POST, instance=editing_profile)
         if updated_form.is_valid():
             updated_form.save()
             messages.success(request, f'Profile for {request.user.username} has been updated.')
 
-        return redirect(reverse(index))
+        return redirect('/profile')

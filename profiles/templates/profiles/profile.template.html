@@ -32,9 +32,9 @@
             </a>
         </div>
         {%csrf_token%}
-        <u>update profile details</u>
+        <u><b>Edit Profile</b></u>
         {{ profile_form | crispy}}
-        <input type="submit">
+        <button type="submit">Update</button>
     </form>
 </div>
 
