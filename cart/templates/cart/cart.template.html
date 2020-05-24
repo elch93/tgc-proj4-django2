@@ -49,12 +49,12 @@
         </div>
         <div class="col-2">
             <a href="{%url 'update_from_cart' cart_item_id=item.cart_item_id%}"><i class="far fa-edit"></i></a>
-            <a href="{%url 'delete_from_cart' cart_item_id=item.cart_item_id%}"><i class="fas fa-trash-alt"></i></a>
+            <a onclick="toggleDeleteCartItem('{{item.cart_item_id}}')"><i class="fas fa-trash-alt"></i></a>
         </div>
     </div>
     {% endfor %}
     {% endif %}
-    <hr class="border-btm-wine"></hr>
+    <hr class="border-btm-wine">
     <div class="row mt-3 pt-3" id='summary'>
         <div class="col-7">
             <b>Number of Items in Cart: {{cart|length}}</b>
@@ -66,9 +66,35 @@
             <a href="#">CHECKOUT</a>
         </div>
     </div>
-    
+
+</div>
+
+<div class='bg-dark' id='deletecartpanel'>
+    <div class="bg-light mt-5 ml-auto mr-auto p-5 w-50">
+        <b>Are you sure you want to remove this item from the cart?</b>
+        <p class="mt-5">
+            <a class="mr-5" href="">
+                <b>Yes</b>
+            </a>
+            <a onclick="toggleDeleteCartItem()">
+                <b>No</b>
+            </a>
+        </p>
+    </div>
 </div>
 
 
+{% endblock %}
 
+{% block myscript %}
+<script>
+    $('#deletecartpanel').hide()
+
+    function toggleDeleteCartItem(item) {
+        let deleteRoute = 'delete/' + item.toString()
+        $('#deletecartpanel').fadeToggle()
+        $('#deletecartpanel').find('a').eq(0).attr('href', deleteRoute)
+    }
+
+</script>
 {% endblock %}
