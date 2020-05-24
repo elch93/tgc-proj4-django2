@@ -3,7 +3,7 @@
         <div class="col-4">
             <a href="{% url 'homepage' %}">
                 <img src="/../static/images/cavstextwhite.png" id="cavslogo" alt="header logo">
-                <span class="ml-2" id="brandtext">TEAM SHOP</span>
+                <span class="ml-2" id="brandtext">TEAM SHOP <i class="fas fa-store"></i></span>
             </a>
         </div>
         <div class="col-4 pt-2 justify-content-center d-flex">
@@ -15,11 +15,11 @@
             <a class="ml-3" href="{%url 'account_signup'%}"><b>REGISTER</b></a>
             {% endif %}
             {% if request.user.is_authenticated %}
-            <a class="ml-3" href="{%url 'profile'%}"><b>PROFILE</b></a>
-            <a class="ml-3" href="{%url 'account_logout'%}"><b>LOGOUT</b></a>
+            <a class="ml-3" href="{%url 'profile'%}"><b><i class="fas fa-user-circle"></i> PROFILE</b></a>
+            <a class="ml-3" href="{%url 'account_logout'%}"><b><i class="fas fa-sign-out-alt"></i> LOGOUT</b></a>
             {% endif %}
             {% if request.user.is_superuser %}
-            <a class="ml-3" href="{%url 'admin:index'%}"><b>ADMIN</b></a>
+            <a class="ml-3" href="{%url 'admin:index'%}"><b><i class="fas fa-user-cog"></i> ADMIN</b></a>
             {% endif %}
         </div>
     </div>

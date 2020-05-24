@@ -1,31 +1,36 @@
 {% extends 'base.template.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %} My Profile {% endblock %}
+{% block title %}My Profile{% endblock %}
 
 {% block content %}
 
-
-profile page
-<br>
-username: {{request.user.username}}
-<br>
-email: {{request.user.email}}
-<br>
-- save default delivery information & more user details like birthday
-<br>
-- provide them with a record of their order history
-<br>
-- wishlist?
-<br>
-<a href="{% url 'homepage' %}">back to home</a>
-
-<div class="row p-0 m-0">
-    <div>
-        <h1>Profile</h1>
-        <p>City: {{profile.city}}</p>
+{% include 'home/navbar.template.html' %}
+<div class="row pl-5 justify-content-start">
+    <h3 class="col-3 border-btm-gold"><i class="fas fa-user-circle"></i> Personal Details</h3>
+    <a onclick="toggleEditProfile()">
+        <i class="far fa-edit"></i>
+    </a>
+</div>
+<div class="row m-0 pl-5">
+    <div class="col-3">
+        <p><b>Username: </b>{{request.user.username}}</p>
+        <p><b>Email: </b>{{request.user.email}}</p>
+        <p><b>Contact No. : </b>{{profile.contact}}</p>
+        <p><b>Country: </b>{{profile.country}}</p>
+        <p><b>City: </b>{{profile.city}}</p>
+        <p><b>Postal Code: </b>{{profile.postal_code}}</p>
+        <p><b>Street Address 1: </b>{{profile.street_address_1}}</p>
+        <p><b>Street Address 2: </b>{{profile.street_address_2}}</p>
     </div>
-    <form class="w-50 ml-auto mr-auto border m-3 p-3" method="POST">
+</div>
+<div class='bg-dark' id='updateprofileform'>
+    <form class="border p-3" method="POST">
+        <div class="row justify-content-end pr-3">
+            <a onclick="toggleEditProfile()">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
         {%csrf_token%}
         <u>update profile details</u>
         {{ profile_form | crispy}}
@@ -34,5 +39,16 @@ email: {{request.user.email}}
 </div>
 
 
+
+{% endblock %}
+
+{% block myscript %}
+<script>
+    $('#updateprofileform').hide()
+    function toggleEditProfile() {
+        $('#updateprofileform').fadeToggle()
+    }
+
+</script>
 
 {% endblock %}

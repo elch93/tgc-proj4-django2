@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
 from django.contrib import messages
+from home.views import index
 # Create your views here.
 
 
