@@ -1,39 +1,111 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# Cleveland Cavaliers Team Shop
+The website can be viewed [here]().
 
-Welcome USER_NAME,
+## Full Stack Frameworks with Django Milestone Project
+Build a full-stack website that allows user to manage a common dataset, which includes allowing users to share their own data with the community and having access to data by others. Main technologies used should include HTML, CSS, JavaScript, Python, Flask & Mongodb.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
+## Strategy
+### Problem
 
-## Gitpod Reminders
+### Proposed Solution
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+### External Users' Goals
 
-`python3 -m http.server`
+### Site Owner's Goals
 
-A blue button should appear to click: *Make Public*,
+## Scope
+### Required Functionalities
 
-Another blue button should appear to click: *Open Browser*.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### Frontend
+HTML
+CSS
+JS, JQUERY
+Bootstrap
 
-A blue button should appear to click: *Make Public*,
+### Backend
+Mongodb
+Python(Django)
 
-Another blue button should appear to click: *Open Browser*.
+### API
+UploadCare
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
+### Merchandise Types
 
-## Updates Since The Instructional Video
+## Structure
 
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
+## Skeleton
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+#### Home Page
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+#### Profile Page
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+## UX/Surface
+### Concept
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### Color Scheme
+### User Stories
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
 
---------
+## Features
+### Existing Features
+#### 
 
-Happy coding!
+#### 
+
+#### 
+
+### Features Left to Implement
+
+
+
+## Technologies Used
+- HTML
+- CSS
+- Javascript
+- Jquery
+- Bootstrap
+- Python
+- Django
+- Postgres
+- Google Fonts
+- Font Awesome
+- Visual Studio Code
+- Git
+- Github
+- Heroku
+- Google Chrome, Firefox
+- Adobe Illustrator
+
+## Testing
+### Website Functions
+#### Validation
+
+
+### Known Bugs
+
+### Main Challenges
+
+
+## Deployment
+
+## Credits
+### Content
+
+
+### Media
+- Product images and descriptions are from [NBA Store EU](https://www.nbastore.eu/stores/nba/en/c/shop-by-team/eastern/cleveland-cavaliers).
+
+### Acknowledgements
+- This project is inspired by websites like [Cavaliers Team Shop](https://www.cavaliersteamshop.com/) and [Uniqlo](https://www.uniqlo.com/sg/#undefined).
+
+- This is for educational use. Disclaimer: 
