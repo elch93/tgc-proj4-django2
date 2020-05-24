@@ -26,12 +26,15 @@ def add_to_cart(request, product_id):
 
         # if user hasn't added the item to cart OR
         # if user has already added the same item but want a different size
+        # create a unique but easily retrievable key in cart
+        cart_item_id = str(product_id) + '-' + str(size)
 
-        if product_id not in cart:
+        if cart_item_id not in cart:
             product = get_object_or_404(Product, pk=product_id)
             order_id = str(uuid.uuid4())
 
-            cart[product_id] = {
+            cart[cart_item_id] = {
+                'cart_item_id': cart_item_id,
                 'order_id': order_id,
                 'id': product_id,
                 'name': product.name,
@@ -41,7 +44,7 @@ def add_to_cart(request, product_id):
             }
 
         else:
-            cart[product_id]['quantity'] += buying_quantity
+            cart[cart_item_id]['quantity'] += buying_quantity
 
         request.session['cart'] = cart
 
@@ -49,12 +52,12 @@ def add_to_cart(request, product_id):
         return redirect(reverse(user_cart))
 
 
-def delete_from_cart(request, product_id):
+def delete_from_cart(request, cart_item_id):
     # retrieve cart
     cart = request.session.get('cart', {})
 
-    if product_id in cart:
-        del cart[product_id]
+    if cart_item_id in cart:
+        del cart[cart_item_id]
 
         request.session['cart'] = cart
         messages.success(request, 'Item removed from cart.')
@@ -62,18 +65,19 @@ def delete_from_cart(request, product_id):
     return redirect(reverse(user_cart))
 
 
-def update_from_cart(request, product_id):
+def update_from_cart(request, cart_item_id):
     # retrieve cart
     cart = request.session.get('cart', {})
 
     if request.method == 'GET':
 
         context = {
-            'update_quantity': cart[product_id]['quantity'],
-            'update_size': cart[product_id]['size'],
-            'product_name': cart[product_id]['name'],
-            'product_cost': cart[product_id]['cost'],
-            'product_id': product_id
+            'update_quantity': cart[cart_item_id]['quantity'],
+            'update_size': cart[cart_item_id]['size'],
+            'product_name': cart[cart_item_id]['name'],
+            'product_cost': cart[cart_item_id]['cost'],
+            'product_id': cart[cart_item_id]['id'],
+            'cart_item_id': cart_item_id
         }
 
         return render(request, 'cart/update_cart.template.html', context)
@@ -81,9 +85,9 @@ def update_from_cart(request, product_id):
         updated_quantity = int(request.POST['quantity'])
         updated_size = request.POST['size']
 
-        if product_id in cart:
-            cart[product_id]['quantity'] = updated_quantity
-            cart[product_id]['size'] = updated_size
+        if cart_item_id in cart:
+            cart[cart_item_id]['quantity'] = updated_quantity
+            cart[cart_item_id]['size'] = updated_size
 
             request.session['cart'] = cart
             messages.success(request, 'Item has been updated in the cart.')

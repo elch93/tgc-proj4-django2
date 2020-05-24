@@ -22,7 +22,7 @@
             <p>{{product_cost}}</p>
         </div>
         <div class="col-4">
-            <form method="POST" action="{% url 'update_from_cart' product_id=product_id %}">
+            <form method="POST" action="{% url 'update_from_cart' cart_item_id=cart_item_id %}">
                 {%csrf_token%}
                 <label class="mr-sm-2" for="select-size">Select Size:</label>
                 <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="select-size" name="size">
