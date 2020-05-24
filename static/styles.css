@@ -110,7 +110,7 @@ nav, header {
 
 #heroimg {
     width: 100%;
-    top: 20px;
+    opacity: 0.6;
 }
 
 #homepage {
@@ -124,7 +124,7 @@ footer button {
     padding: 3px 8px;
 }
 
-footer {
+footer .col-4 {
     border-top: 3px solid #ffb81c;
 }
 
@@ -135,30 +135,30 @@ footer i {
 #herotext1 {
     position: absolute;
     top: 300px;
-    left: 60px;
+    right: 80px;
     font-size: 40px;
     font-weight: bold;
+    z-index: 6;
 }
 
 #herotext2 {
     position: absolute;
-    top: 350px;
+    top: 330px;
     left: 60px;
-    font-size: 20px;
+    font-size: 50px;
 }
 
-#herotext3 {
-    position: absolute;
-    top: 350px;
-    right: 150px;
-    font-size: 20px;
+
+#herotext2 p{
+    margin-top: -10px;
 }
+
 
 #herotext1 a {
     background-color: #ffb81c;
     border-radius: 5px;
     border: solid #ffb81c 2px;
-    padding: 5px 10px;
+    padding: 8px 15px;
     font-weight: 900;
     font-size: 22px;
     margin-top: 10px;
