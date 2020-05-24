@@ -3,7 +3,7 @@
 {% block content %}
 {% include 'home/navbar.template.html' %}
 <div class="container-fluid p-5" id='cartpage'>
-    <h3>Cart Details</h3>
+    <h3 class="border-btm-gold">Cart Details</h3>
     <div class="row">
         <div class="col-1">
             <b>No.</b>
@@ -27,7 +27,8 @@
     {% if cart|length == 0 %}
     <p class="mt-3">Your cart is empty.</p>
     {% else %}
-    {% for key, item in cart.items %} 
+    {% for key, item in cart.items %}
+    <hr>
     <div class="row mt-3">
         <div class="col-1">
             <p>{{forloop.counter}}</p>
@@ -49,17 +50,17 @@
             <a href="{%url 'delete_from_cart' cart_item_id=item.cart_item_id%}"><i class="fas fa-trash-alt"></i></a>
         </div>
     </div>
-    <hr>
     {% endfor %}
     {% endif %}
+    <hr class="border-btm-wine"></hr>
     <div class="row mt-3 pt-3" id='summary'>
         <div class="col-7">
             <b>Number of Items in Cart: {{cart|length}}</b>
         </div>
         <div class="col-5">
-            <p><b>Subtotal: -</b></p>
-            <p><b>Delivery Cost: -</b></p>
-            <p><b>Total: -</b></p>
+            <p><b>Subtotal: ${{subtotal}}</b></p>
+            <p><b>Delivery Cost: ${{delivery_fee}}</b></p>
+            <p><b>Total: ${{total}}</b></p>
             <a href="#">CHECKOUT</a>
         </div>
     </div>

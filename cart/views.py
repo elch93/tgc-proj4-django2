@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, reverse, HttpResponse, get_object
 from django.contrib.auth.decorators import login_required
 from manage_product.models import Product, Category
 from django.contrib import messages
-from home.views import index
 import uuid
+from decimal import Decimal
 # Create your views here.
 
 
@@ -11,12 +11,24 @@ def user_cart(request):
     cart = request.session.get('cart', {})
 
     subtotal = 0
+    delivery_fee = Decimal('10.00')
+    
 
     for key, item in cart.items():
-        print(item['quantity'], item['unit_cost'])
+        print(Decimal(item['unit_cost']))
+        line_total = item['quantity']*Decimal(item['unit_cost'])
+        subtotal += line_total
+
+    if subtotal >= 20:
+        delivery_fee = Decimal('0.00')
+
+    total = delivery_fee + subtotal
 
     context = {
-        'cart': cart
+        'cart': cart,
+        'subtotal': subtotal,
+        'delivery_fee': delivery_fee,
+        'total': total
     }
 
     return render(request, 'cart/cart.template.html', context)
@@ -45,7 +57,7 @@ def add_to_cart(request, product_id):
                 'name': product.name,
                 'quantity': buying_quantity,
                 'size': size,
-                'unit_cost': float(product.price)
+                'unit_cost': str(product.price)
             }
             messages.success(
                 request, f"{product.name} has been added to your cart.")
