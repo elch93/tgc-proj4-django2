@@ -9,6 +9,7 @@ import uuid
 
 def user_cart(request):
     cart = request.session.get('cart', {})
+    print(cart)
 
     context = {
         'cart': cart
@@ -36,19 +37,22 @@ def add_to_cart(request, product_id):
             cart[cart_item_id] = {
                 'cart_item_id': cart_item_id,
                 'order_id': order_id,
-                'id': product_id,
+                'product_id': product_id,
                 'name': product.name,
                 'quantity': buying_quantity,
                 'size': size,
                 'cost': float(product.price)
             }
+            messages.success(
+                request, f"{product.name} has been added to your cart.")
 
         else:
             cart[cart_item_id]['quantity'] += buying_quantity
+            messages.success(
+                request, f"{cart[cart_item_id]['name']} has been added to your cart.")
 
         request.session['cart'] = cart
 
-        messages.success(request, "Product added to cart.")
         return redirect(reverse(user_cart))
 
 
@@ -57,10 +61,11 @@ def delete_from_cart(request, cart_item_id):
     cart = request.session.get('cart', {})
 
     if cart_item_id in cart:
+        messages.success(
+            request, f"{cart[cart_item_id]['name']} has been removed from cart.")
         del cart[cart_item_id]
 
         request.session['cart'] = cart
-        messages.success(request, 'Item removed from cart.')
 
     return redirect(reverse(user_cart))
 
