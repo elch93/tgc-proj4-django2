@@ -6,13 +6,15 @@
 {% block content %}
 
 {% include 'home/navbar.template.html' %}
-<div class='' id='updatereviewform'>
-    <form class="border p-3" method="POST">
-        {%csrf_token%}
-        <u><b>Edit Review</b></u>
-        {{ review_form | crispy}}
-        <button type="submit">Update</button>
-    </form>
+<div class='row justify-content-center pt-3' id='updatereviewform'>
+    <div class="col-7">
+        <form class="border p-3" method="POST">
+            {%csrf_token%}
+            <u><b>Edit Review</b></u>
+            {{ review_form | crispy}}
+            <button type="submit">Update</button>
+        </form>
+    </div>
 </div>
 
 
