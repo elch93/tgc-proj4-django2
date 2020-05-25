@@ -136,11 +136,15 @@ footer i {
 
 #herotext1 {
     position: absolute;
-    top: 300px;
+    top: 380px;
     right: 120px;
     font-size: 40px;
     font-weight: bold;
     z-index: 6;
+}
+
+#herotext1 p{
+    margin-top: -25px;
 }
 
 #herotext2 {
