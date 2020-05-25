@@ -8,26 +8,6 @@ from reviews.models import Review
 
 
 def index(request):
-    # search
-    if request.GET:
-        if 'q' in request.GET:
-            userquery = request.GET['q']
-            if not userquery:
-                # no search term detected
-                messages.error(request, 'Please enter a search term')
-                return redirect(reverse(index))
-            else:
-                # case-insensitive search in product name or description
-                search = Q(name__icontains=userquery) | Q(
-                    description__icontains=userquery) | Q(
-                    tags__name__icontains=userquery)
-                results = Product.objects.filter(search)
-
-                context = {
-                    'products': results,
-                }
-
-                return render(request, 'home/view.template.html', context)
 
     return render(request, 'home/index.template.html')
 
@@ -96,31 +76,12 @@ def view_all(request):
 
 
 def product_details(request, product_id):
-    # if user enter a search term on products page
-    if request.GET:
-        if 'q' in request.GET:
-            userquery = request.GET['q']
-            if not userquery:
-                # no search term detected
-                messages.error(request, 'Please enter a search term')
-                return redirect(reverse(index))
-            else:
-                # case-insensitive search in product name or description
-                search = Q(name__icontains=userquery) | Q(
-                    description__icontains=userquery) | Q(
-                    tags__name__icontains=userquery)
-                results = Product.objects.filter(search)
-
-                context = {
-                    'products': results
-                }
-
-                return render(request, 'home/view.template.html', context)
-
     get_product = get_object_or_404(Product, pk=product_id)
+    get_reviews = Review.objects.filter(product=get_product)
 
     context = {
-        'product': get_product
+        'product': get_product,
+        'product_reviews': get_reviews
     }
 
     return render(request, 'home/details.template.html', context)

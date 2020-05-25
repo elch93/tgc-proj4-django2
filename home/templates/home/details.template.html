@@ -38,7 +38,26 @@
             <button type="submit">Add To Cart <i class="fas fa-shopping-cart"></i></button>
         </form>
         <br>
+        {% if request.user.is_authenticated %}
         <a href="{%url 'review' product_id=product.id%}">Leave a Review</a>
+        {% endif %}
     </div>
+</div>
+<div class="row justify-content-center">
+    {% for review in product_reviews %}
+    <div class="col-7">
+        <div>
+            <b>{{review.title}}</b>
+        </div>
+        <p>
+            {{review.content}}
+        </p>
+        <p>Posted By: {{review.owner}}</p>
+        <p>Posted On: {{review.date_posted}}</p>
+        {% if review.owner == request.user %}
+        <a>delete</a>
+        {% endif %}
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}

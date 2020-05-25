@@ -9,6 +9,7 @@ from django.contrib import messages
 
 @login_required
 def review(request, product_id):
+    # create review form
     if request.method == 'GET':
         product = get_object_or_404(Product, pk=product_id)
 
@@ -16,18 +17,21 @@ def review(request, product_id):
 
         context = {
             'review_form': review_form,
-            'product':product
+            'product': product
         }
 
         return render(request, 'reviews/review.template.html', context)
 
+    # create review
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)
+        product_reviewed = get_object_or_404(Product, pk=product_id)
         if review_form.is_valid():
-            review_form.owner = request.user
-            review_form.product = get_object_or_404(Product, pk=product_id)
-            review_form.save()
+            temp_review = review_form.save(commit=False)
+            temp_review.owner = request.user
+            temp_review.product = product_reviewed
+            temp_review.save()
             messages.success(
-                request, f'Review for {review_form.product.name} has been saved.')
+                request, f'Review for {product_reviewed.name} has been saved.')
 
             return redirect('/products/details/' + str(product_id))
