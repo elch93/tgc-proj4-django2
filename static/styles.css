@@ -152,6 +152,7 @@ footer i {
     top: 380px;
     left: 40px;
     font-size: 40px;
+    transform: scale(1.1);
 }
 
 
@@ -336,6 +337,10 @@ footer i {
 #resetpage .password_reset .requiredField,
 #registerpage form label {
     font-weight: bold;
+}
+
+.textInput, input, textarea {
+    font-weight: 300 !important;
 }
 
 /* review page */

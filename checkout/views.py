@@ -8,6 +8,10 @@ from django.contrib.sites.models import Site
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
+endpoint_secret='whsec_sXxoLf6gxEaOuWY3RD4uRXYvl3D4ezCs'
+
+def handle_checkout_session(session):
+    print(session)
 
 def checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -17,11 +21,12 @@ def checkout(request):
     line_items = []
 
     for id, item in cart.items():
-        product_object = get_object_or_404(Product, pk=id)
+        x = id.split('-')
+        product_object = get_object_or_404(Product, pk=x[0])
 
         line_items.append({
             'name': product_object.name,
-            'price_in_cents': int(product_object.price * 100),
+            'amount': int(product_object.price * 100),
             'currency': 'sgd',
             'quantity': item['quantity']
         })
@@ -45,6 +50,7 @@ def checkout(request):
 
 
 def checkout_success(request):
+    request.session['cart'] = {}
     return HttpResponse('Checkout Success')
 
 
