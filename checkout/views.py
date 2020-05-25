@@ -6,12 +6,17 @@ from django.conf import settings
 import stripe
 from django.contrib.sites.models import Site
 from django.views.decorators.csrf import csrf_exempt
+from profiles.views import profile
+from cart.views import user_cart
+from cart.models import Order
 # Create your views here.
 
-endpoint_secret='whsec_sXxoLf6gxEaOuWY3RD4uRXYvl3D4ezCs'
+endpoint_secret = 'whsec_sXxoLf6gxEaOuWY3RD4uRXYvl3D4ezCs'
+
 
 def handle_checkout_session(session):
     print(session)
+
 
 def checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -50,12 +55,25 @@ def checkout(request):
 
 
 def checkout_success(request):
+    cart = request.session.get('cart')
+    # record transaction and display in profile
+    record_order = Order.objects.create()
+    record_order.buyer = request.user
+    record_order.subtotal = cart['subtotal']
+    record_order.delivery_cost = cart['delivery_cost']
+    record_order.total = cart['total']
+    record_order.summary = cart['summary']
+
+    record_order.save()
+
     request.session['cart'] = {}
-    return HttpResponse('Checkout Success')
+    messages.success(request, 'Payment successfully made.')
+    return redirect(reverse(profile))
 
 
 def checkout_cancelled(request):
-    return HttpResponse('Checkout Cancelled')
+    messages.success(request, 'Payment cancelled.')
+    return redirect(reverse(user_cart))
 
 
 @csrf_exempt
