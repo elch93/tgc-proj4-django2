@@ -5,7 +5,7 @@
 {% block content %}
 
 {% include 'home/navbar.template.html' %}
-<div class="row justify-content-center pl-5">
+<div class="row justify-content-center pl-5" name='top'>
     <div class="col-3 m-3 detailscard">
         <div class="mb-3">
             <img class="img-fluid" src="{{ product.image.cdn_url }}-/quality/lightest/" alt="">
@@ -39,26 +39,75 @@
         </form>
         <br>
         {% if request.user.is_authenticated %}
-        <a href="{%url 'review' product_id=product.id%}">Leave a Review</a>
+        <a href="{%url 'review' product_id=product.id%}">Leave a Review <i class="fas fa-comments"></i></a>
         {% endif %}
     </div>
 </div>
 <div class="row justify-content-center">
+    <div class="col-8">
+        <b class="border-btm-wine">PRODUCT REVIEWS</b>
+    </div>
     {% for review in product_reviews %}
-    <div class="col-7">
-        <div>
-            <b>{{review.title}}</b>
+    <div class="col-8">
+        <div class="row">
+            <div class="col-8">
+                <b>{{review.title}}</b>
+            </div>
+            <div class="col-3">
+                {% if review.owner == request.user %}
+                <a href="{% url 'edit_review' review_id=review.id %}"><i class="far fa-edit"></i></a>
+                <a class='ml-3' onclick="toggleDeleteReview('{{review.id}}')"><i class="fas fa-trash-alt"></i></a>
+                {% endif %}
+            </div>
         </div>
         <p>
             {{review.content}}
         </p>
-        <p>Posted By: {{review.owner}}</p>
-        <p>Posted On: {{review.date_posted}}</p>
-        {% if review.owner == request.user %}
-        <a href="{% url 'edit_review' review_id=review.id %}">edit</a>
-        <a href="{% url 'delete_review' review_id=review.id %}">delete</a>
-        {% endif %}
+        <div class="row">
+            <div class="col-6">
+                <p><b><i class="fas fa-comments"></i> </b>{{review.owner}}</p>
+            </div>
+            <div class="col-6">
+                <p><b><i class="far fa-calendar-alt"></i> </b>{{review.date_posted}}</p>
+            </div>
+        </div>
+        <hr>
     </div>
     {% endfor %}
 </div>
+
+<a href="#top" id='backtotopreview'>
+    <i class="fas fa-caret-square-up"></i>
+</a>
+
+<div class='bg-dark' id='deletereviewpanel'>
+    <div class="bg-light mt-5 ml-auto mr-auto p-5 w-50">
+        <b>Are you sure you want to remove this review?</b>
+        <p class="mt-5">
+            <a class="mr-5">
+                <b>Yes</b>
+            </a>
+            <a onclick="toggleDeleteReview()">
+                <b>No</b>
+            </a>
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block myscript %}
+<script>
+    $('#deletereviewpanel').hide()
+
+    function toggleDeleteReview(item) {
+        let current_page = new URL(window.location);
+        current_page['pathname'] = '/review/delete/'+item
+        console.log(current_page)
+        $('#deletereviewpanel').fadeToggle()
+        $('#deletereviewpanel').find('a').eq(0).click(function(){
+            window.location.replace(current_page)
+        })
+    }
+
+</script>
 {% endblock %}
