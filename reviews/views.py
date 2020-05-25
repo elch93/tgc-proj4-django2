@@ -36,15 +36,39 @@ def review(request, product_id):
 
             return redirect('/products/details/' + str(product_id))
 
+
 @login_required
 def delete_review(request, review_id):
     selected_review = get_object_or_404(Review, pk=review_id)
     product_id = selected_review.product.id
-    messages.success(request, f'Review {selected_review.title} has been deleted')
+    messages.success(
+        request, f'Review {selected_review.title} has been deleted')
     selected_review.delete()
 
     return redirect('/products/details/' + str(product_id))
 
+
 @login_required
-def edit_review():
-    return HttpResponse('test')
+def edit_review(request, review_id):
+    selected_review = get_object_or_404(Review, pk=review_id)
+    product = selected_review.product
+
+    if request.method == 'GET':
+        review_form = ReviewForm(instance=selected_review)
+
+        context = {
+            'review_form': review_form,
+            'product': product
+        }
+
+        return render(request, 'reviews/update_review.template.html', context)
+
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST, instance=selected_review)
+
+        if review_form.is_valid():
+            review_form.save()
+            messages.success(
+                request, f'Review for {product.name} has been updated.')
+
+            return redirect('/products/details/' + str(product.id))
