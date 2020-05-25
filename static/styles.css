@@ -318,7 +318,8 @@ footer i {
 /* login/register page */
 #loginpage .login button,
 #resetbtn,
-#registerpage button {
+#registerpage button,
+#logoutpage form button {
     background-color: #ffb81c;
     border-radius: 5px;
     border: solid #ffb81c 2px;
