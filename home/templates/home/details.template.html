@@ -55,7 +55,8 @@
         <p>Posted By: {{review.owner}}</p>
         <p>Posted On: {{review.date_posted}}</p>
         {% if review.owner == request.user %}
-        <a>delete</a>
+        <a href="{% url 'edit_review' review_id=review.id %}">edit</a>
+        <a href="{% url 'delete_review' review_id=review.id %}">delete</a>
         {% endif %}
     </div>
     {% endfor %}

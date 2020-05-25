@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from .models import Review
 from .forms import ReviewForm
 from manage_product.models import Product
@@ -35,3 +35,16 @@ def review(request, product_id):
                 request, f'Review for {product_reviewed.name} has been saved.')
 
             return redirect('/products/details/' + str(product_id))
+
+@login_required
+def delete_review(request, review_id):
+    selected_review = get_object_or_404(Review, pk=review_id)
+    product_id = selected_review.product.id
+    messages.success(request, f'Review {selected_review.title} has been deleted')
+    selected_review.delete()
+
+    return redirect('/products/details/' + str(product_id))
+
+@login_required
+def edit_review():
+    return HttpResponse('test')
