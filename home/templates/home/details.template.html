@@ -47,6 +47,7 @@
     <div class="col-8">
         <b class="border-btm-wine">PRODUCT REVIEWS</b>
     </div>
+    {% if product_reviews %}
     {% for review in product_reviews %}
     <div class="col-8">
         <div class="row">
@@ -74,6 +75,9 @@
         <hr>
     </div>
     {% endfor %}
+    {% else %}
+    <p>There are no reviews for this product yet.</p>
+    {% endif %}
 </div>
 
 <a href="#top" id='backtotopreview'>

@@ -112,7 +112,7 @@ header {
 
 #heroimg {
     width: 100%;
-    opacity: 0.6;
+    opacity: 1;
 }
 
 #homepage {
@@ -137,7 +137,7 @@ footer i {
 #herotext1 {
     position: absolute;
     top: 380px;
-    right: 120px;
+    right: 40px;
     font-size: 40px;
     font-weight: bold;
     z-index: 6;
@@ -149,9 +149,9 @@ footer i {
 
 #herotext2 {
     position: absolute;
-    top: 330px;
-    left: 60px;
-    font-size: 50px;
+    top: 380px;
+    left: 40px;
+    font-size: 40px;
 }
 
 
