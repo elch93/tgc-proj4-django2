@@ -14,6 +14,25 @@ def profile(request):
         profile_form = UserProfileForm(instance=profile)
         order_history = Order.objects.filter(buyer=request.user)
 
+        item_purchased = {}
+
+        for order in order_history:
+            item_array = order.summary.split(',')
+            item_array.pop()
+            item_purchased[order.id] = []
+            
+            for i in item_array:
+                details = i.split('-')
+                
+                item = {
+                    'product_id': details[0],
+                    'size': details[1],
+                    'quantity': details[2]
+                }
+                item_purchased[order.id].append(item)
+
+        print(item_purchased)
+
         context = {
             'profile': profile,
             'profile_form': profile_form,

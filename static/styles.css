@@ -134,6 +134,11 @@ footer i {
     font-size: 30px;
 }
 
+footer p i {
+    font-size: 20px;
+    margin-right: 3px;
+}
+
 #herotext1 {
     position: absolute;
     top: 380px;
@@ -149,10 +154,9 @@ footer i {
 
 #herotext2 {
     position: absolute;
-    top: 380px;
+    top: 250px;
     left: 40px;
-    font-size: 40px;
-    transform: scale(1.1);
+    font-size: 65px;
 }
 
 
