@@ -49,7 +49,7 @@ def user_cart(request):
 
     return render(request, 'cart/cart.template.html', context)
 
-
+@login_required
 def add_to_cart(request, product_id):
     if request.method == 'POST':
         # obtain user's cart from the session

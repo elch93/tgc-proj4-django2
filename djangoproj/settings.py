@@ -93,8 +93,7 @@ TEMPLATES = [
                 # display categories on nav bar
                 'home.context.show_categories',
                 'cart.context.cart_content',
-                'cart.context.cart_summary',
-                'profiles.context.order_history'
+                'cart.context.cart_summary'
             ],
         },
     },

@@ -43,7 +43,6 @@ body {
     padding: 0px;
     margin: 0px;
     overflow-x: hidden;
-    height: 100%;
 }
 
 /* home page */
@@ -264,17 +263,6 @@ footer p i {
     color: #ffffff;
 }
 
-#deletecartpanel {
-    position: absolute;
-    top: 0px;
-    left: 0; 
-    right: 0;
-    bottom: 0;
-    z-index: 5;
-    text-align: center;
-    display: none;
-}
-
 #deletecartpanel a {
     background-color: #ffb81c;
     border-radius: 5px;
@@ -303,6 +291,7 @@ footer p i {
     font-weight: 900;
     transition: ease-in-out 0.4s;
 }
+
 #updateprofileform {
     position: absolute;
     top: 0px;

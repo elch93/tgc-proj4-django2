@@ -38,7 +38,7 @@
         <div class="col-3">
             <b>{{item.name}}</b>
             <div class="mb-3 mt-3 text-center">
-                <img style="width:50%;"class="img-fluid" src="{{ item.product_image}}-/quality/lightest/" alt="">
+                <img style="width:50%;" class="img-fluid" src="{{ item.product_image}}-/quality/lightest/" alt="">
             </div>
         </div>
         <div class="col-2">
@@ -56,7 +56,8 @@
         </div>
         <div class="col-2">
             <a href="{%url 'update_from_cart' cart_item_id=item.cart_item_id%}"><i class="far fa-edit"></i></a>
-            <a onclick="toggleDeleteCartItem('{{item.cart_item_id}}')"><i class="fas fa-trash-alt"></i></a>
+            <a onclick="toggleDeleteCartItem('{{item.cart_item_id}}')" data-toggle="modal"
+                data-target="#deletecartpanel"><i class="fas fa-trash-alt"></i></a>
         </div>
     </div>
     {% endfor %}
@@ -71,29 +72,38 @@
         <div class="col-5">
             <p><b>Subtotal: ${{subtotal}}</b></p>
             <p><b>Delivery Cost: ${{delivery_fee}}</b></p>
-            <label for="dcode"><p><b>Discount Code: </b></p></label>
+            <label for="dcode">
+                <p><b>Discount Code: </b></p>
+            </label>
             <input type="text" name="dcode">
             <p><b>Total: ${{total}}</b></p>
             <a href="{% url 'checkout' %}">CHECKOUT</a>
         </div>
     </div>
-
 </div>
 
-<div class='bg-dark' id='deletecartpanel'>
-    <div class="bg-light mt-5 ml-auto mr-auto p-5 w-50">
-        <b>Are you sure you want to remove this item from the cart?</b>
-        <p class="mt-5">
-            <a class="mr-5" href="">
-                <b>Yes</b>
-            </a>
-            <a onclick="hidePanel()">
-                <b>No</b>
-            </a>
-        </p>
+<div class="modal fade" id='deletecartpanel' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Remove From Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <b>Are you sure you want to remove this item from the cart?</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><b>No</b></button>
+                <a class="mr-5" href="">
+                    <b>Yes</b>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
-
 
 {% endblock %}
 
@@ -105,10 +115,6 @@
         let deleteRoute = 'delete/' + item.toString()
         $('#deletecartpanel').fadeToggle()
         $('#deletecartpanel').find('a').eq(0).attr('href', deleteRoute)
-    }
-
-    function hidePanel() {
-        $('#deletecartpanel').fadeToggle()
     }
 
 </script>
