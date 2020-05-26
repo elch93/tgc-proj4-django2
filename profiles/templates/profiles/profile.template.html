@@ -12,7 +12,7 @@
         <i class="far fa-edit"></i>
     </a>
 </div>
-<div class="row m-0 pl-5">
+<div class="row m-0 pl-5 justify-content-between">
     <div class="col-3">
         <p><b>Username: </b>{{request.user.username}}</p>
         <p><b>Email: </b>{{request.user.email}}</p>
@@ -22,6 +22,23 @@
         <p><b>Postal Code: </b>{{profile.postal_code}}</p>
         <p><b>Street Address 1: </b>{{profile.street_address_1}}</p>
         <p><b>Street Address 2: </b>{{profile.street_address_2}}</p>
+    </div>
+    <div class="col-8">
+        <h3>Transaction History</h3>
+        <div class="row">
+            <div class="col-2"><b>Order ID.</b></div>
+            <div class="col-3"><b>Date</b></div>
+            <div class="col-2"><b>Total</b></div>
+            <div class="col-5"><b>Summary</b></div>
+        </div>
+        {% for order in order_history %}
+        <div class="row">
+            <div class="col-2">{{order.id}}</div>
+            <div class="col-3">{{order.date}}</div>
+            <div class="col-2">{{order.total}}</div>
+            <div class="col-5">{{order.summary}}</div>
+        </div>
+        {% endfor %}
     </div>
 </div>
 <div class='bg-dark' id='updateprofileform'>
