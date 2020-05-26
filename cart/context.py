@@ -18,6 +18,7 @@ def cart_summary(request):
     })
 
     context = {
+        'cart_summary': cart_summary,
         'subtotal': cart_summary['subtotal'],
         'total': cart_summary['total'],
         'delivery_fee': cart_summary['delivery_fee'],

@@ -45,14 +45,13 @@ def checkout(request):
         final_delivery_cost = 0
     else:
         final_delivery_cost = 10
-
-    # add in delivery cost order line
-    line_items.append({
-        'name': 'Delivery Fee',
-        'amount': int(final_delivery_cost * 100),
-        'currency': 'sgd',
-        'quantity': 1
-    })
+        # add in delivery cost order line
+        line_items.append({
+            'name': 'Delivery Fee',
+            'amount': int(final_delivery_cost * 100),
+            'currency': 'sgd',
+            'quantity': 1
+        })
 
     current_site = Site.objects.get_current()
     domain = current_site.domain
