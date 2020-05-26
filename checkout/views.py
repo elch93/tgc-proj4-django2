@@ -22,10 +22,11 @@ def handle_checkout_session(session):
     print(session)
 
 
+@login_required
 def checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
-    # check if cart is empty 
+    # check if cart is empty
     cart = request.session.get('cart', {})
     if len(cart) == 0:
         messages.error(request, 'Your cart is empty.')
@@ -35,7 +36,7 @@ def checkout(request):
     if request.user.is_authenticated:
         userinfo = get_object_or_404(UserProfile, user=request.user)
         usercity = userinfo.city
-        if usercity == None:
+        if usercity is None:
             messages.error(request, 'Please update your delivery address.')
             return redirect(reverse(profile))
 

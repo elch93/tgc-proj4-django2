@@ -5,8 +5,6 @@ from django.contrib import messages
 import uuid
 from decimal import Decimal
 from home.views import product_details
-from profiles.models import UserProfile
-from profiles.views import profile
 # Create your views here.
 
 
