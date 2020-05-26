@@ -9,9 +9,12 @@ from django.views.decorators.csrf import csrf_exempt
 from profiles.views import profile
 from cart.views import user_cart
 from cart.models import Order
+import os
+from dotenv import load_dotenv
+load_dotenv()
 # Create your views here.
 
-endpoint_secret = 'whsec_sXxoLf6gxEaOuWY3RD4uRXYvl3D4ezCs'
+endpoint_secret = os.environ.get('endpoint_secret', '')
 
 
 def handle_checkout_session(session):
