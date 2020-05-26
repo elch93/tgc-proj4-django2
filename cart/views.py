@@ -52,6 +52,9 @@ def user_cart(request):
 
 @login_required
 def add_to_cart(request, product_id):
+    if request.method == 'GET':
+        return redirect(reverse(product_details, args=product_id))
+        
     if request.method == 'POST':
         # obtain user's cart from the session
         cart = request.session.get('cart', {})
