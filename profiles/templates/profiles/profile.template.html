@@ -25,19 +25,19 @@
             <p><b>Street Address 2: </b>{{profile.street_address_2}}</p>
         </div>
     </div>
-    <div class="col-8 pt-3">
+    <div class="col-8 pt-3" id='transactionhistory'>
         <h3 class="border-btm-wine w-50">Transaction History</h3>
         <div class="row">
-            <div class="col-1"><b>Order ID.</b></div>
-            <div class="col-3"><b>Date</b></div>
+            <div class="col-2"><b>Order ID.</b></div>
+            <div class="col-2"><b>Date</b></div>
             <div class="col-1"><b>Total</b></div>
             <div class="col-7"><b>Summary</b></div>
         </div>
         {% for order in order_history %}
         <hr>
         <div class="row">
-            <div class="col-1">{{order.id}}</div>
-            <div class="col-3">{{order.date}}</div>
+            <div class="col-2">{{order.id}}</div>
+            <div class="col-2">{{order.date}}</div>
             <div class="col-1">${{order.total}}</div>
             <div class="col-7">
                 {% for i,j in item_purchased.items %}
@@ -58,6 +58,10 @@
                         </ul>
                         <ul>
                             <b>Quantity: </b>{{k.quantity}}
+                        </ul>
+                        <ul class="mt-3">
+                            <a href="{%url 'review' product_id=k.product_id%}">Leave a Review <i
+                                    class="fas fa-comments"></i></a>
                         </ul>
                     </li>
                     {%endfor%}

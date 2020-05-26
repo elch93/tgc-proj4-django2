@@ -29,6 +29,7 @@ def profile(request):
                 product = get_object_or_404(Product, pk=details[0])
 
                 item = {
+                    'product_id': product.id,
                     'product_name': product.name,
                     'product_price': product.price,
                     'size': details[1],
