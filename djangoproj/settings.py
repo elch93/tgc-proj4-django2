@@ -92,7 +92,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # display categories on nav bar
                 'home.context.show_categories',
-                'cart.context.cart_content'
+                'cart.context.cart_content',
+                'cart.context.cart_summary'
             ],
         },
     },

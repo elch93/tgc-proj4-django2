@@ -55,18 +55,23 @@ def checkout(request):
 
 
 def checkout_success(request):
-    cart = request.session.get('cart')
+    cart_summary = request.session.get('cart_summary')
     # record transaction and display in profile
-    # record_order = Order.objects.create()
-    # record_order.buyer = request.user
-    # record_order.subtotal = cart['subtotal']
-    # record_order.delivery_cost = cart['delivery_cost']
-    # record_order.total = cart['total']
-    # record_order.summary = cart['summary']
-
-    # record_order.save()
+    record_order = Order.objects.create(
+        buyer=request.user,
+        total=float(cart_summary['total']),
+        subtotal=float(cart_summary['subtotal']),
+        delivery_cost=float(cart_summary['delivery_fee'])
+    )
 
     request.session['cart'] = {}
+    request.session['cart_summary'] = {
+        'subtotal': 0,
+        'total': 0,
+        'delivery_fee': 'NIL',
+        'summary': []
+    }
+
     messages.success(request, 'Payment successfully made.')
     return redirect(reverse(profile))
 

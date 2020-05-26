@@ -4,6 +4,7 @@ from manage_product.models import Product, Category
 from django.contrib import messages
 import uuid
 from decimal import Decimal
+from .models import Order
 # Create your views here.
 
 
@@ -16,7 +17,6 @@ def user_cart(request):
     summary = []
 
     for key, item in cart.items():
-        print(Decimal(item['unit_cost']))
         line_total = item['quantity']*Decimal(item['unit_cost'])
         subtotal += line_total
         total_qty += item['quantity']
@@ -29,12 +29,12 @@ def user_cart(request):
 
     cart_summary = request.session.get('cart_summary', {})
 
-    cart_summary['subtotal'] = str(subtotal)
-    cart_summary['total'] = str(total)
-    cart_summary['delivery_fee'] = str(delivery_fee)
-    cart_summary['summary'] = summary
-
-    print(cart_summary)
+    cart_summary = {
+        'subtotal': str(subtotal),
+        'total': str(total),
+        'delivery_fee': str(delivery_fee),
+        'summary': summary
+    }
 
     request.session['cart_summary'] = cart_summary
 
@@ -62,7 +62,7 @@ def add_to_cart(request, product_id):
         if get_item.category.name == 'Accessory':
             size = 0
         else:
-            size = int(request.POST['size'])
+            size = request.POST['size']
 
         cart_item_id = str(product_id) + '-' + str(size)
 
@@ -133,7 +133,7 @@ def update_from_cart(request, cart_item_id):
         if product_selected.category.name == 'Accessory':
             updated_size = 0
         else:
-            updated_size = int(request.POST['size'])
+            updated_size = request.POST['size']
 
         if cart_item_id in cart:
             cart[cart_item_id]['quantity'] = updated_quantity
