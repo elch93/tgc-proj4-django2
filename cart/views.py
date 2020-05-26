@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from manage_product.models import Product, Category
+from manage_product.models import Product
 from django.contrib import messages
 import uuid
 from decimal import Decimal
-from .models import Order
+from home.views import product_details
 # Create your views here.
 
 
@@ -49,6 +49,7 @@ def user_cart(request):
 
     return render(request, 'cart/cart.template.html', context)
 
+
 @login_required
 def add_to_cart(request, product_id):
     if request.method == 'POST':
@@ -91,7 +92,7 @@ def add_to_cart(request, product_id):
 
         request.session['cart'] = cart
 
-        return redirect(reverse(user_cart))
+        return redirect(reverse(product_details, args=product_id))
 
 
 def delete_from_cart(request, cart_item_id):
