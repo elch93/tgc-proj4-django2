@@ -23,6 +23,7 @@
         </div>
         <form method="POST" action="{%url 'add_to_cart' product_id=product.id%}">
             {%csrf_token%}
+            {% if product.category.name != 'Accessory' %}
             <div>
                 <label class="mr-sm-2" for="select-size">Select Size:</label>
                 <select id="select-size" name="size">
@@ -31,6 +32,7 @@
                     <option value="large">Large</option>
                 </select>
             </div>
+            {% endif %}
             <div class="mb-2">
                 <label class="mr-sm-2" for="select-qty">Select Quantity:</label>
                 <input type="number" value="1" id='select-qty' name="quantity">
