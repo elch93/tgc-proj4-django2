@@ -1,9 +1,14 @@
 
 def cart_content(request):
     cart = request.session.get('cart', {})
+    number_of_items = 0
+
+    for item in cart:
+        number_of_items += cart[item]['quantity']
+
     context = {
         'cart': cart,
-        'number_of_items': len(cart)
+        'number_of_items': number_of_items
     }
 
     return context
