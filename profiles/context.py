@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 
 
 def userprofile(request):
-    userinfo = {}
+    userinfo = request.session.get('userinfo', {})
     context = {}
 
     if request.user.is_authenticated:

@@ -7,6 +7,7 @@ import stripe
 from django.contrib.sites.models import Site
 from django.views.decorators.csrf import csrf_exempt
 from profiles.views import profile
+from profiles.models import UserProfile
 from cart.views import user_cart
 from cart.models import Order
 import os
@@ -24,10 +25,19 @@ def handle_checkout_session(session):
 def checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
+    # check if cart is empty 
     cart = request.session.get('cart', {})
     if len(cart) == 0:
         messages.error(request, 'Your cart is empty.')
         return redirect(reverse(user_cart))
+
+    # then check if user has a delivery address
+    if request.user.is_authenticated:
+        userinfo = get_object_or_404(UserProfile, user=request.user)
+        usercity = userinfo.city
+        if usercity == None:
+            messages.error(request, 'Please update your delivery address.')
+            return redirect(reverse(profile))
 
     line_items = []
     grand_total = 0
