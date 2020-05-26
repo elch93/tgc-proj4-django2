@@ -36,7 +36,7 @@ def checkout(request):
     for id, item in cart.items():
         x = id.split('-')
         product_object = get_object_or_404(Product, pk=x[0])
-        grand_total += product_object.price*item['quantity']
+        grand_total += (product_object.price*item['quantity'])
         line_items.append({
             'name': product_object.name,
             'amount': int(product_object.price * 100),
@@ -89,7 +89,7 @@ def checkout_success(request):
         'subtotal': 0,
         'total': 0,
         'delivery_fee': 'NIL',
-        'summary': []
+        'summary': cart_summary['summary']
     }
 
     messages.success(request, 'Payment successfully made.')

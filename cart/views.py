@@ -14,13 +14,14 @@ def user_cart(request):
     subtotal = 0
     delivery_fee = Decimal('10.00')
     total_qty = 0
-    summary = []
+    summary = ""
 
     for key, item in cart.items():
         line_total = item['quantity']*Decimal(item['unit_cost'])
         subtotal += line_total
         total_qty += item['quantity']
-        summary.append({key: item['quantity']})
+        pid_size_qty = str(key) + '-' + str(item['quantity'])
+        summary += (pid_size_qty + ',')
 
     if subtotal >= 20:
         delivery_fee = Decimal('0.00')
