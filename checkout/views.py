@@ -81,7 +81,8 @@ def checkout_success(request):
         buyer=request.user,
         total=float(cart_summary['total']),
         subtotal=float(cart_summary['subtotal']),
-        delivery_cost=float(cart_summary['delivery_fee'])
+        delivery_cost=float(cart_summary['delivery_fee']),
+        summary=cart_summary['summary']
     )
 
     request.session['cart'] = {}
