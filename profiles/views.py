@@ -4,6 +4,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 from django.contrib import messages
 from cart.models import Order
+from manage_product.models import Product
 # Create your views here.
 
 
@@ -12,6 +13,8 @@ def profile(request):
     if request.method == 'GET':
         profile = get_object_or_404(UserProfile, user=request.user)
         profile_form = UserProfileForm(instance=profile)
+
+        # retrieve user's order history
         order_history = Order.objects.filter(buyer=request.user)
 
         item_purchased = {}
@@ -20,22 +23,23 @@ def profile(request):
             item_array = order.summary.split(',')
             item_array.pop()
             item_purchased[order.id] = []
-            
+
             for i in item_array:
                 details = i.split('-')
-                
+                product = get_object_or_404(Product, pk=details[0])
+
                 item = {
-                    'product_id': details[0],
+                    'product_name': product.name,
+                    'product_price': product.price,
                     'size': details[1],
                     'quantity': details[2]
                 }
                 item_purchased[order.id].append(item)
 
-        print(item_purchased)
-
         context = {
             'profile': profile,
             'profile_form': profile_form,
+            'item_purchased': item_purchased,
             'order_history': order_history
         }
         return render(request, 'profiles/profile.template.html', context)

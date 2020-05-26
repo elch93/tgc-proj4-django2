@@ -6,38 +6,65 @@
 {% block content %}
 
 {% include 'home/navbar.template.html' %}
-<div class="row pl-5  pt-3 justify-content-start">
-    <h3 class="col-3 border-btm-gold"><i class="fas fa-user-circle"></i> Personal Details</h3>
-    <a onclick="toggleEditProfile()">
-        <i class="far fa-edit"></i>
-    </a>
-</div>
-<div class="row m-0 pl-5 justify-content-between">
-    <div class="col-3">
-        <p><b>Username: </b>{{request.user.username}}</p>
-        <p><b>Email: </b>{{request.user.email}}</p>
-        <p><b>Contact No. : </b>{{profile.contact}}</p>
-        <p><b>Country: </b>{{profile.country}}</p>
-        <p><b>City: </b>{{profile.city}}</p>
-        <p><b>Postal Code: </b>{{profile.postal_code}}</p>
-        <p><b>Street Address 1: </b>{{profile.street_address_1}}</p>
-        <p><b>Street Address 2: </b>{{profile.street_address_2}}</p>
+<div class="row">
+    <div class="col-4">
+        <div class="row pl-5  pt-3 justify-content-start">
+            <h3 class="border-btm-gold mr-3"><i class="fas fa-user-circle"></i> Personal Details</h3>
+            <a onclick="toggleEditProfile()">
+                <i class="far fa-edit"></i>
+            </a>
+        </div>
+        <div class="m-0 pl-5">
+            <p><b>Username: </b>{{request.user.username}}</p>
+            <p><b>Email: </b>{{request.user.email}}</p>
+            <p><b>Contact No. : </b>{{profile.contact}}</p>
+            <p><b>Country: </b>{{profile.country}}</p>
+            <p><b>City: </b>{{profile.city}}</p>
+            <p><b>Postal Code: </b>{{profile.postal_code}}</p>
+            <p><b>Street Address 1: </b>{{profile.street_address_1}}</p>
+            <p><b>Street Address 2: </b>{{profile.street_address_2}}</p>
+        </div>
     </div>
-    <div class="col-8">
-        <h3>Transaction History</h3>
+    <div class="col-8 pt-3">
+        <h3 class="border-btm-wine w-50">Transaction History</h3>
         <div class="row">
-            <div class="col-2"><b>Order ID.</b></div>
+            <div class="col-1"><b>Order ID.</b></div>
             <div class="col-3"><b>Date</b></div>
-            <div class="col-2"><b>Total</b></div>
-            <div class="col-5"><b>Summary</b></div>
+            <div class="col-1"><b>Total</b></div>
+            <div class="col-7"><b>Summary</b></div>
         </div>
         {% for order in order_history %}
         <hr>
         <div class="row">
-            <div class="col-2">{{order.id}}</div>
+            <div class="col-1">{{order.id}}</div>
             <div class="col-3">{{order.date}}</div>
-            <div class="col-2">{{order.total}}</div>
-            <div class="col-5">{{order.summary}}</div>
+            <div class="col-1">${{order.total}}</div>
+            <div class="col-7">
+                {% for i,j in item_purchased.items %}
+                <ol>
+                    {% if i == order.id %}
+                    {%for k in j%}
+                    <li class="mb-3">
+                        <ul>
+                            <b>Product: </b>{{k.product_name}}
+                        </ul>
+                        {% if k.size != '0' %}
+                        <ul>
+                            <b>Size: </b>{{k.size}}
+                        </ul>
+                        {%endif%}
+                        <ul>
+                            <b>Unit Cost: </b>{{k.product_price}}
+                        </ul>
+                        <ul>
+                            <b>Quantity: </b>{{k.quantity}}
+                        </ul>
+                    </li>
+                    {%endfor%}
+                    {% endif %}
+                </ol>
+                {%endfor%}
+            </div>
         </div>
         {% endfor %}
     </div>
@@ -63,10 +90,10 @@
 {% block myscript %}
 <script>
     $('#updateprofileform').hide()
+
     function toggleEditProfile() {
         $('#updateprofileform').fadeToggle()
     }
-
 </script>
 
 {% endblock %}
