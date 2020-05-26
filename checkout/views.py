@@ -22,19 +22,37 @@ def checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
     cart = request.session.get('cart', {})
+    if len(cart) == 0:
+        messages.error(request, 'Your cart is empty.')
+        return redirect(reverse(user_cart))
 
     line_items = []
+    grand_total = 0
+    final_delivery_cost = 0
 
     for id, item in cart.items():
         x = id.split('-')
         product_object = get_object_or_404(Product, pk=x[0])
-
+        grand_total += product_object.price*item['quantity']
         line_items.append({
             'name': product_object.name,
             'amount': int(product_object.price * 100),
             'currency': 'sgd',
             'quantity': item['quantity']
         })
+
+    if grand_total >= 20:
+        final_delivery_cost = 0
+    else:
+        final_delivery_cost = 10
+
+    # add in delivery cost order line
+    line_items.append({
+        'name': 'Delivery Fee',
+        'amount': int(final_delivery_cost * 100),
+        'currency': 'sgd',
+        'quantity': 1
+    })
 
     current_site = Site.objects.get_current()
     domain = current_site.domain
