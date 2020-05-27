@@ -1,84 +1,91 @@
 {% extends 'base.template.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %} Manage DB {% endblock %}
+{% block title %} Manage Database {% endblock %}
 
 {% block content %}
+
 {% if request.user.is_authenticated %}
-<p class='mt-5'>Welcome {{request.user}}</p>
-<a href="{% url 'homepage' %}">back to home</a>
+<div class="container-fluid">
+    <div class="row">
+        <a class='p-3' href="{% url 'homepage' %}"><i class="fas fa-chevron-circle-left"></i> back to home</a>
+        <div class="col-12">
+            <p class='mt-5'><b>Welcome, {{request.user}}</b></p>
+        </div>
+    </div>
+</div>
 {% endif %}
-
-
 <div class="row justify-content-between">
-    <div class="w-40 m-3">
-        <div class="card p-3 m-3">
-            <b>Categories Created</b>
+    <div class="border border-dark shadow-sm p-3 mb-3 ml-auto mr-auto">
+        <form method="POST" id='cform'>
+            {% csrf_token %}
+            <u>Add A New Category</u>
+            {{cform|crispy}}
+            <input type="submit" value="create" form="cform" name='csubmit'>
+        </form>
+    </div>
+    <div class="border border-dark shadow-sm p-3 mb-3 ml-auto mr-auto">
+        <form method="POST" id='tform'>
+            {% csrf_token %}
+            <u>Add A New Tag</u>
+            {{tform|crispy}}
+            <input type="submit" value="create" form="tform" name='tsubmit'>
+        </form>
+    </div>
+    {%block head %}
+    {{ form.media }}
+    {%endblock%}
+    <div class="border border-dark shadow-sm p-3 mb-3 ml-auto mr-auto">
+        <form method="POST" id='pform'>
+            {% csrf_token %}
+            <u>Add A New Product</u>
+            {{pform|crispy}}
+            <input type="submit" value="create" form="pform" name='psubmit'>
+        </form>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row p-2 justify-content-center">
+        <div class="col-12 p-2 border mb-3">
+            <b class="mb-3"><u>Categories Created</u></b>
             {% for i in categories %}
-            <p>{{i}}
-                <a class="btn-warning btn" href="{% url 'delete' item_type='category' item_id=i.id %}">Delete</a>
-                <a class="btn-warning btn" href="{% url 'edit' item_type='category' item_id=i.id %}">Edit</a>
-            </p>
+            <div class="mt-3">
+                <b>{{i}}</b>
+                <a class="btn-danger btn ml-3" href="{% url 'delete' item_type='category' item_id=i.id %}">Delete</a>
+                <a class="btn-secondary btn ml-3" href="{% url 'edit' item_type='category' item_id=i.id %}">Edit</a>
+            </div>
             {% endfor %}
         </div>
-        <div class="card p-3 m-3">
-            <b>Tags Created</b>
+
+        <div class="col-12 p-2 border mb-3">
+            <b class="mb-3"><u>Tags Created</u></b>
             {% for i in tags %}
-            <p>{{i}}
-                <a class="btn-warning btn" href="{% url 'delete' item_type='tag' item_id=i.id %}">Delete</a>
-                <a class="btn-warning btn" href="{% url 'edit' item_type='tag' item_id=i.id %}">Edit</a>
-            </p>
+            <div class="mt-3">
+                <b>{{i}}</b>
+                <a class="btn-danger btn ml-3" href="{% url 'delete' item_type='tag' item_id=i.id %}">Delete</a>
+                <a class="btn-secondary btn ml-3" href="{% url 'edit' item_type='tag' item_id=i.id %}">Edit</a>
+            </div>
             {% endfor %}
         </div>
-        <div class="card p-3 m-3">
-            <b>Products Created</b>
+
+        <div class="col-12 p-2 border mb-3">
+            <b class="mb-3"><u>Products Created</u></b>
             {% for i in products %}
-            <p>{{i.name}} ${{i.price}}</p>
+            <p><b>{{i.name}}</b> ${{i.price}}</p>
             <p>Tags:
                 {% for j in i.tags.all %}<p>{{j.name}}</p>{% endfor %}
             </p>
             <div class="w-50">
-                <img class="img-fluid" src="{{ i.image.cdn_url }}-/crop/600x600/center/-/quality/lightest/" alt="">
+                <img class="img-fluid" src="{{ i.image.cdn_url }}-/quality/lightest/" alt="">
             </div>
 
             <p>Category: {{i.category}}</p>
-            <a class="btn-warning btn" href="{% url 'delete' item_type='product' item_id=i.id %}">Delete</a>
-            <a class="btn-warning btn mt-3" href="{% url 'edit' item_type='product' item_id=i.id %}">Edit</a>
+            <a class="btn-danger btn" href="{% url 'delete' item_type='product' item_id=i.id %}">Delete</a>
+            <a class="btn-secondary btn" href="{% url 'edit' item_type='product' item_id=i.id %}">Edit</a>
             <hr>
             {% endfor %}
         </div>
     </div>
-    <div class="w-50">
-        <div class="border border-dark shadow-sm p-3 m-5">
-            <form method="POST" id='cform'>
-                {% csrf_token %}
-                <u>Create A Category</u>
-                {{cform|crispy}}
-                <input type="submit" value="create" form="cform" name='csubmit'>
-            </form>
-        </div>
-        <div class="border border-dark shadow-sm p-3 m-5">
-            <form method="POST" id='tform'>
-                {% csrf_token %}
-                <u>Create A Tag</u>
-                {{tform|crispy}}
-                <input type="submit" value="create" form="tform" name='tsubmit'>
-            </form>
-        </div>
-        {%block head %}
-        {{ form.media }}
-        {%endblock%}
-        <div class="border border-dark shadow-sm p-3 m-5">
-            <form method="POST" id='pform'>
-                {% csrf_token %}
-                <u>Create A Product</u>
-                {{pform|crispy}}
-                <input type="submit" value="create" form="pform" name='psubmit'>
-            </form>
-        </div>
-    </div>
 </div>
-
-
-
 {% endblock %}
