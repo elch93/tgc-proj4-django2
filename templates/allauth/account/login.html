@@ -11,7 +11,7 @@
   <div class="col-12">
     <h1>{% trans "Log In" %}</h1>
   </div>
-  <div class="col-4">
+  <div class="col-md-4 col-12">
     <form class="login" method="POST" action="{% url 'account_login' %}">
       {% csrf_token %}
       {{ form | crispy }}

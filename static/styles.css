@@ -300,24 +300,6 @@ footer p i {
     transition: ease-in-out 0.4s;
 }
 
-#updateprofileform {
-    position: absolute;
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    text-align: center;
-}
-
-#updateprofileform form {
-    background-color: #ffffff;
-    margin: 10px auto;
-    width: 450px;
-    z-index: 6;
-    text-align: left;
-}
 
 #updateprofileform form button {
     background-color: #ffb81c;
@@ -326,7 +308,7 @@ footer p i {
     padding: 5px 10px;
     font-weight: 900;
     transition: ease-in-out 0.4s;
-    color: #ffffff;
+    color: #000000;
 }
 
 /* login/register page */
@@ -435,5 +417,7 @@ footer p i {
     #transactionhistory ul {
         padding-left: 0px;
     }
+
+  
 
 }
