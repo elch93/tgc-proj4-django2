@@ -1,16 +1,16 @@
 {% load static %}
 <header>
     <div class='row m-0 p-2'>
-        <div class="col-4">
+        <div class="col-md-4 order-1 col-6">
             <a href="{% url 'homepage' %}">
                 <img src="{% static 'images/cavstextwhite.png' %}" id="cavslogo" alt="header logo">
-                <span class="ml-2" id="brandtext">TEAM SHOP <i class="fas fa-store"></i></span>
+                <span class="ml-md-2" id="brandtext">TEAM SHOP <i class="d-none d-md-inline fas fa-store"></i></span>
             </a>
         </div>
-        <div class="col-4 pt-2 justify-content-center d-flex">
+        <div class="col-md-4 col-12 pt-2 justify-content-center d-flex order-3 order-md-2">
             <span>FREE DELIVERY ON ORDERS ABOVE $20</span>
         </div>
-        <div class="col-4 d-flex justify-content-end pt-2">
+        <div class="col-md-4 col-6 d-flex justify-content-end pt-2 order-2 order-md-3">
             {% if not request.user.is_authenticated %}
             <a class="ml-3" href="{%url 'account_login'%}"><b>LOGIN</b></a>
             <a class="ml-3" href="{%url 'account_signup'%}"><b>REGISTER</b></a>
@@ -50,7 +50,7 @@
                 <a href="{%url 'view_products'%}?category=Accessory">ACCESSORIES</a>
             </li>
             <li>
-                <a href="{%url 'view_products'%}?tag=Sale">SALE</a>
+                <a href="{%url 'view_products'%}?tag=Sale" style="color: #e60000;">SALE</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">

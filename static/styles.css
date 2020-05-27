@@ -10,7 +10,6 @@ navy: #041e42
 black: #000000
 white: #ffffff
 */
-
 .gbor {
     border: 3px solid gold;
 }
@@ -141,8 +140,8 @@ footer p i {
 
 #herotext1 {
     position: absolute;
-    top: 280px;
-    right: 70px;
+    top: 330px;
+    right: 120px;
     font-size: 40px;
     font-weight: bold;
     z-index: 6;
@@ -154,8 +153,8 @@ footer p i {
 
 #herotext2 {
     position: absolute;
-    top: 180px;
-    left: 40px;
+    top: 270px;
+    left: 70px;
     font-size: 65px;
 }
 
@@ -167,8 +166,8 @@ footer p i {
 
 #herotext1 a {
     background-color: #ffb81c;
-    border-radius: 5px;
     border: solid #ffb81c 2px;
+    box-shadow: -5px 5px 0px 0px #6f263d;
     padding: 8px 15px;
     font-weight: 900;
     font-size: 22px;
@@ -377,4 +376,14 @@ footer p i {
     height: 100vh;
     z-index: 5;
     text-align: center;
+}
+
+/* for med-sized devices */
+@media (min-width:769px) and (max-width:1024px) {
+
+}
+
+/* for sm-sized devices */
+@media (max-width:768px) {
+
 }
