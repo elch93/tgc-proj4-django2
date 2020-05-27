@@ -24,7 +24,8 @@
         <form method="POST" action="{%url 'add_to_cart' product_id=product.id%}">
             {%csrf_token%}
             {% if product.category.name != 'Accessory' %}
-            <div>
+            <a style="background-color: #ffffff; color: #000000; padding:0px; border:none; font-weight:300;"><u>Size Chart</u></a>
+            <div class="mt-2">
                 <label class="mr-sm-2" for="select-size">Select Size:</label>
                 <select id="select-size" name="size">
                     <option value="small">Small</option>
@@ -44,7 +45,7 @@
     </div>
 </div>
 <div class="row justify-content-center">
-    <div class="col-md-8 col-11">
+    <div class="col-md-8 col-11 mb-3">
         <b class="border-btm-wine">PRODUCT REVIEWS</b>
     </div>
     {% if product_reviews %}

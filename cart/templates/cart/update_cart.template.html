@@ -4,9 +4,9 @@
 
 {% block content %}
 {% include 'home/navbar.template.html' %}
-<div class="container-fluid p-5" id="updatepage">
+<div class="container-fluid p-md-5 p-3" id="updatepage">
     <a href="{%url 'view_cart'%}"><i class="fas fa-chevron-circle-left"></i> Back to Cart</a>
-    <div class="row mt-2 justify-content-center">
+    <div class="row mt-2 justify-content-center d-none d-md-block">
         <div class="col-3 border-btm-wine">
             <b>Item</b>
         </div>
@@ -18,16 +18,16 @@
         </div>
     </div>
     <div class="row justify-content-center mt-3">
-        <div class="col-3">
+        <div class="col-md-3 col-12">
             <p><b>{{product_name}}</b></p>
             <div class="mb-3">
                 <img class="img-fluid" src="{{ product.image.cdn_url }}-/quality/lightest/" alt="">
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-md-2 col-12 text-center">
             <p>${{product_cost}}</p>
         </div>
-        <div class="col-3">
+        <div class="col-md-3 col-12">
             <form method="POST" action="{% url 'update_from_cart' cart_item_id=cart_item_id %}">
                 {%csrf_token%}
                 {% if product.category.name != 'Accessory' %}

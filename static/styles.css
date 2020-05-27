@@ -271,6 +271,15 @@ footer p i {
     transition: ease-in-out 0.4s;
 }
 
+#deliverycartinfo {
+    background-color: #eeeeee;
+    padding: 0px 5px;
+}
+
+#deliverycartinfo p {
+    margin-top: -10px;
+}
+
 /* update page */
 #updatepage button {
     background-color: #ffb81c;

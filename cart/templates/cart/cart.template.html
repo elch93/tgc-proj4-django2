@@ -4,9 +4,9 @@
 
 {% block content %}
 {% include 'home/navbar.template.html' %}
-<div class="container-fluid p-5" id='cartpage'>
+<div class="container-fluid p-md-5 p-3" id='cartpage'>
     <h3 class="border-btm-gold">Cart Details</h3>
-    <div class="row">
+    <div class="row d-none d-md-block">
         <div class="col-1">
             <b>No.</b>
         </div>
@@ -35,23 +35,25 @@
         <div class="col-1">
             <p>{{forloop.counter}}.</p>
         </div>
-        <div class="col-3">
+        <div class="col-md-3 col-10">
             <b>{{item.name}}</b>
             <div class="mb-3 mt-3 text-center">
                 <img style="width:50%;" class="img-fluid" src="{{ item.product_image}}-/quality/lightest/" alt="">
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-md-3 col-7">
             {% if item.size == 0%}
             <p>NIL</p>
             {% else %}
-            <p>{{item.size}}</p>
+            <p><span class="d-md-none">Size: </span>{{item.size}}</p>
             {% endif %}
+            <p class='d-md-none'>Qty: {{item.quantity}}</p>
+            <p class='d-md-none'>Unit Cost: ${{item.unit_cost}}</p>
         </div>
-        <div class="col-2">
+        <div class="col-2 d-none d-md-block">
             <p>{{item.quantity}}</p>
         </div>
-        <div class="col-2">
+        <div class="col-2 d-none d-md-block">
             <p>${{item.unit_cost}}</p>
         </div>
         <div class="col-2">
@@ -64,36 +66,38 @@
     {% endif %}
     <hr class="border-btm-wine">
     <div class="row mt-3 pt-3" id='summary'>
-        <div class="col-7">
+        <div class="col-md-7 col-12">
             <p>
                 <b>Total No. of Items in Cart: {{total_quantity}}</b>
             </p>
-            <p>
-                <u><b>Delivery Information</b></u>
-            </p>
-            <p>
-                <b>Email: {{user_email}}</b>
-            </p>
-            <p>
-                <b>Contact: {{user_contact}}</b>
-            </p>
-            <p>
-                <b>Country: {{user_country}}</b>
-            </p>
-            <p>
-                <b>City: {{user_city}}</b>
-            </p>
-            <p>
-                <b>Postal Code: {{user_postal}}</b>
-            </p>
-            <p>
-                <b>Street Address 1: {{user_s1}}</b>
-            </p>
-            <p>
-                <b>Street Address 2: {{user_s2}}</b>
-            </p>
+            <div id="deliverycartinfo">
+                <p>
+                    <u><b>Delivery Information</b></u>
+                </p>
+                <p>
+                    <b>Email: {{user_email}}</b>
+                </p>
+                <p>
+                    <b>Contact: {{user_contact}}</b>
+                </p>
+                <p>
+                    <b>Country: {{user_country}}</b>
+                </p>
+                <p>
+                    <b>City: {{user_city}}</b>
+                </p>
+                <p>
+                    <b>Postal Code: {{user_postal}}</b>
+                </p>
+                <p>
+                    <b>Street Address 1: {{user_s1}}</b>
+                </p>
+                <p>
+                    <b>Street Address 2: {{user_s2}}</b>
+                </p>
+            </div>
         </div>
-        <div class="col-5">
+        <div class="col-md-5 col-12">
             <p><b>Subtotal: ${{subtotal}}</b></p>
             <p><b>Delivery Cost: ${{delivery_fee}}</b></p>
             <label for="dcode">
