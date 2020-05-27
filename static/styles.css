@@ -380,10 +380,34 @@ footer p i {
 
 /* for med-sized devices */
 @media (min-width:769px) and (max-width:1024px) {
-
+    
 }
 
 /* for sm-sized devices */
 @media (max-width:768px) {
+    #heroimg {
+        position: relative;
+        min-height: 500px;
+        min-width: 750px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #herotext2 {
+        display: none;
+    }
+
+    #homepage #herotext1 {
+        font-size: 25px;
+        left: auto;
+        right: auto;
+        width: 100%;
+        top: 470px;
+        text-align: center;
+    }
+
+    #herotext1 p{
+        margin-top:5px;
+    }
 
 }
