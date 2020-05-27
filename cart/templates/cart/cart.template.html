@@ -59,7 +59,7 @@
         <div class="col-2">
             <a href="{%url 'update_from_cart' cart_item_id=item.cart_item_id%}"><i class="far fa-edit"></i></a>
             <a onclick="toggleDeleteCartItem('{{item.cart_item_id}}')" data-toggle="modal"
-                data-target="#deletecartpanel"><i class="fas fa-trash-alt"></i></a>
+                data-target="#deletecartpanel"><i class="fas fa-trash-alt mt-3 mt-md-0"></i></a>
         </div>
     </div>
     {% endfor %}

@@ -7,14 +7,14 @@
 
 {% include 'home/navbar.template.html' %}
 <div class="row">
-    <div class="col-4">
-        <div class="row pl-5  pt-3 justify-content-start">
+    <div class="col-md-4 col-12">
+        <div class="row pl-5 pt-3 justify-content-start">
             <h3 class="border-btm-gold mr-3"><i class="fas fa-address-book"></i> Delivery Information</h3>
             <a onclick="toggleEditProfile()">
                 <i class="far fa-edit"></i>
             </a>
         </div>
-        <div class="m-0 pl-5">
+        <div class="m-0 pl-md-5 pl-3">
             <p><b>Username: </b>{{request.user.username}}</p>
             <p><b>Email: </b>{{request.user.email}}</p>
             <p><b>Contact No. : </b>{{profile.contact}}</p>
@@ -25,9 +25,9 @@
             <p><b>Street Address 2: </b>{{profile.street_address_2}}</p>
         </div>
     </div>
-    <div class="col-8 pt-3" id='transactionhistory'>
-        <h3 class="border-btm-wine w-50">Transaction History</h3>
-        <div class="row">
+    <div class="col-md-8 col-12 pt-3" id='transactionhistory'>
+        <h3 class="border-btm-wine w-md-50 w-100 ml-3 ml-md-0">Transaction History</h3>
+        <div class="row d-none d-md-block">
             <div class="col-2"><b>Order ID.</b></div>
             <div class="col-2"><b>Date</b></div>
             <div class="col-1"><b>Total</b></div>
@@ -35,11 +35,11 @@
         </div>
         {% for order in order_history %}
         <hr>
-        <div class="row">
-            <div class="col-2">{{order.id}}</div>
-            <div class="col-2">{{order.date}}</div>
-            <div class="col-1">${{order.total}}</div>
-            <div class="col-7">
+        <div class="row pl-3 pl-md-0">
+            <div class="col-md-2 col-6"><b class="d-inline d-md-none">Order ID: </b>{{order.id}}</div>
+            <div class="col-md-2 col-6"><b class="d-inline d-md-none">Date: </b>{{order.date}}</div>
+            <div class="col-md-1 col-12"><b class="d-inline d-md-none">Total: </b>${{order.total}}</div>
+            <div class="col-md-7 col-12">
                 {% for i,j in item_purchased.items %}
                 <ol>
                     {% if i == order.id %}

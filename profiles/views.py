@@ -15,7 +15,7 @@ def profile(request):
         profile_form = UserProfileForm(instance=profile)
 
         # retrieve user's order history
-        order_history = Order.objects.filter(buyer=request.user)
+        order_history = Order.objects.filter(buyer=request.user).order_by('-date')
 
         item_purchased = {}
 

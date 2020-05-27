@@ -432,4 +432,8 @@ footer p i {
         color: #000000;
     }
 
+    #transactionhistory ul {
+        padding-left: 0px;
+    }
+
 }
