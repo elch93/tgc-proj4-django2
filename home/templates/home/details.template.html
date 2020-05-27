@@ -5,8 +5,8 @@
 {% block content %}
 
 {% include 'home/navbar.template.html' %}
-<div class="row justify-content-center pl-5" name='top'>
-    <div class="col-3 m-3 detailscard">
+<div class="row justify-content-center pl-md-5 p-2" name='top'>
+    <div class="col-md-3 col-12 m-3 detailscard">
         <div class="mb-3">
             <img class="img-fluid" src="{{ product.image.cdn_url }}-/quality/lightest/" alt="">
         </div>
@@ -16,7 +16,7 @@
         <p class="text-danger">{{j.name}}</p>
         {% endfor %}
     </div>
-    <div class="col-5 mt-3 ordercard">
+    <div class="col-md-5 col-12 mt-3 ordercard">
         <div>
             <p class="font-weight-bold">PRODUCT DESCRIPTION</p>
             <p>{{product.description}}</p>
@@ -44,12 +44,12 @@
     </div>
 </div>
 <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-md-8 col-11">
         <b class="border-btm-wine">PRODUCT REVIEWS</b>
     </div>
     {% if product_reviews %}
     {% for review in product_reviews %}
-    <div class="col-8">
+    <div class="col-md-8 col-11">
         <div class="row">
             <div class="col-8">
                 <b>{{review.title}}</b>
