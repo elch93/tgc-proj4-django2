@@ -410,4 +410,16 @@ footer p i {
         margin-top:5px;
     }
 
+    #navbarNavDropdown li {
+        margin-top: 5px;
+    }
+
+    #backtotop {
+        position: fixed;
+        top: 90vh;
+        right: 5%;
+        font-size: 30px;
+        color: #000000;
+    }
+
 }

@@ -55,10 +55,10 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <form class="form-inline" method="GET" action="{%url 'view_products'%}">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='q'>
-                <button class='rounded' type="submit" id='querybtn'><i class="fas fa-search"></i></button>
+                <input class="form-control mr-sm-2 mt-2 mt-md-0" type="search" placeholder="Search" aria-label="Search" name='q'>
+                <button class='rounded mt-2 mt-md-0' type="submit" id='querybtn'><i class="fas fa-search"></i></button>
             </form>
-            <li class="nav-item">
+            <li class="nav-item mt-2 mt-md-0">
                 <a class="nav-link" href="{%url 'view_cart'%}">
                     {{number_of_items}}<i class="fas fa-shopping-cart"></i>
                 </a>
