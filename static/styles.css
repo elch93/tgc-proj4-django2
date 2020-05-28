@@ -147,10 +147,6 @@ footer p i {
     z-index: 6;
 }
 
-#herotext1 p{
-    margin-top: -25px;
-}
-
 #herotext2 {
     position: absolute;
     top: 270px;
@@ -368,10 +364,6 @@ footer p i {
         transform: translateX(-50%);
     }
 
-    #herotext2 {
-        display: none;
-    }
-
     #homepage #herotext1 {
         font-size: 25px;
         left: auto;
@@ -422,4 +414,5 @@ footer p i {
         text-align: center;
         z-index: 1;
     }
+
 }

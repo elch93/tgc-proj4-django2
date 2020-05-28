@@ -47,22 +47,22 @@
 
 <div class="container-fluid">
     <div class="row p-2 justify-content-center">
-        <div class="col-12 p-2 border mb-3">
+        <div class="col-12 col-md-6 p-2 border mb-3">
             <b class="mb-3"><u>Categories Created</u></b>
             {% for i in categories %}
             <div class="mt-3">
-                <b>{{i}}</b>
+                {{forloop.counter}}. <b>{{i}}</b>
                 <a class="btn-danger btn ml-3" href="{% url 'delete' item_type='category' item_id=i.id %}">Delete</a>
                 <a class="btn-secondary btn ml-3" href="{% url 'edit' item_type='category' item_id=i.id %}">Edit</a>
             </div>
             {% endfor %}
         </div>
 
-        <div class="col-12 p-2 border mb-3">
+        <div class="col-12 col-md-6 p-2 border mb-3">
             <b class="mb-3"><u>Tags Created</u></b>
             {% for i in tags %}
             <div class="mt-3">
-                <b>{{i}}</b>
+                {{forloop.counter}}. <b>{{i}}</b>
                 <a class="btn-danger btn ml-3" href="{% url 'delete' item_type='tag' item_id=i.id %}">Delete</a>
                 <a class="btn-secondary btn ml-3" href="{% url 'edit' item_type='tag' item_id=i.id %}">Edit</a>
             </div>
