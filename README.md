@@ -2,12 +2,12 @@
 The website can be viewed [here](https://tgc-proj4-app.herokuapp.com/). Use the dummy staff account to gain access to the [Manage Product page](https://tgc-proj4-app.herokuapp.com/manage_product/) as a staff to manage data in the database. Use the dummy customer account to use the website as a regular customer.
 
 1. Dummy Staff Account
-username: test
-password: t1e2s3t4
+- username: test
+- password: t1e2s3t4
 
 2. Dummy Customer Account
-username: testcustomer
-password: dummyaccount
+- username: testcustomer
+- password: dummyaccount
 
 ## Full Stack Frameworks with Django Milestone Project
 Build a full-stack website that allows user to manage a common dataset, which includes allowing users to share their own data with the community and having access to data by others. Main technologies used should include HTML, CSS, JavaScript, Python, Flask & Mongodb.
@@ -37,11 +37,16 @@ Create an e-commerce mobile-friendly website that can be accessed by fans to buy
     1. Manage Products
         - This app allows site owners(staff) to manipulate the products, categories and tags data in the database. The main url is: [Manage Product page](https://tgc-proj4-app.herokuapp.com/manage_product/).
     2. Home
+        - Essentially, this app is responsible for the bulk of frontend, presenting most information to users like the navigation bar, home page and products.
     3. Cart
+        - This app is responsible for cart actions, such as adding to cart, removing from cart and updating the cart item.
     4. Checkout
+        - This app handles the Stripe payment, and stores the user order transactions to the database after a successful checkout.
     5. Profile
+        - This app provides the platform for users to see their transaction history and edit their delivery information.
     6. Reviews
-    
+        - This app allows users to leave a review on products they had purchased.
+
 ### Frontend
 HTML
 CSS
@@ -65,41 +70,51 @@ The site owner can add more categories, tags and products if they like. The test
 4. Outerwear
 
 Current Tags: Out of Stock, Online Exclusive, Sale
+
 ## Structure
 
 ## Skeleton
 
-#### Home Page
-
-#### Profile Page
-
 ## UX/Surface
 ### Concept
 
+
 ### Color Scheme
+The colors used in this website is based on the team colors of the Cleveland Cavaliers, which are gold, wine and black.
+
 ### User Stories
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-10. 
+![User Stories](readme/userstories.png)
 
 ## Features
 ### Existing Features
-#### 
+#### Purchase Team Merchandise, Show Love for Cleveland Cavaliers!
+The list of available team merchandise can be viewed by clicking on the links on the navigation bar. The product view can be filtered by their categories or tags(e.g. sale). The list of products can also be sorted alphabetically or according to their prices in ascending/descending order. The search on the navigation bar also allows users to search using a specific word or partial word. Clicking on the desired product takes the user to the product details page where you can read more information about the product and also add it into your cart. However, adding items to cart requires signing up for an account. Stripe payment is used for the online transaction. Use the dummy customer account to try it out. Product details page also includes its reviews made by other users who purchased them. Reviews for products can be left by the users only if they purchased it. The 'add review' button is located at the transaction history in the profile page. Reviews can be edited or deleted at the product's details page.
 
-#### 
+For orders above $20, the delivery fee is free. If not, it will be $10.
 
-#### 
+#### Profile Page
+This page allows user to view and edit their delivery information, as well as to view their order transaction history. There can be potential features for this page which will be discussed later.
+
+#### Manage Product Page
+This page allows staff accounts to manage the information in the database, such as the creation of more products, categories and tags. The superuser can assign staff status to accounts that can be trusted to access this feature.
+
+#### Mobile Version
+The website is best viewed on laptops with at least 1200px. It supports small, medium and large-sized devices as well.
 
 ### Features Left to Implement
+Due to the steeper learning curve of Django and project time constraints, many features that I want to implement to make the ecommerce website more complete were left out.
 
+#### Sending Email for Verification
+Emails can be sent out to users who register for an account so that they can have their email verified and gain access to the main features of the website.
 
+#### Profiles: Multiple Addresses, Wishlist, Storing Address in Order Model
+The profile app can allow for multiple addresses. Order made to the address should also be stored in the order transaction history, or to be more precise, the Order Model. A wishlist feature can be implemented for users to add products they want for future reference.
+
+#### Products: Size Chart, Sales Prices, Rating, Pagination
+The product details page can include features like star ratings in addition to reviews, pagination for better organization when the list of products gets longer, and a size chart which gives users a reference to the sizes of apparels. Products with 'sale' tag can have their original prices displayed for comparison.
+
+#### Discount Codes
+Like most online shopping businesses these days, there can be a discount code system that provides various benefits to customers such as a price discount or free gifts.
 
 ## Technologies Used
 - HTML
