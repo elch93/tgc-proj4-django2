@@ -170,7 +170,7 @@ Heroku:
 
 Others:
 
-    You will need Django secret key, Stripe secret, publishable, endpoint secret keys, database url in your .env file. Use Python's load_dotenv() to implement these keys into the project. 
+    You will need Django secret key, UploadCare secret & public keys, Stripe secret, publishable, endpoint secret keys, database url in your .env file. Use Python's load_dotenv() to implement these keys into the project. 
 
 ## Credits
 ### Media & Content
