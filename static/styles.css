@@ -416,3 +416,16 @@ footer p i {
     }
 
 }
+
+/* for lg-sized devices */
+@media (min-width: 1024px) and (max-width:1199px) {
+    #homepage #herotext1 {
+        font-size: 25px;
+        left: auto;
+        right: auto;
+        width: 100%;
+        top: 300px;
+        text-align: center;
+        z-index: 1;
+    }
+}
