@@ -1,10 +1,13 @@
 {% extends 'base.template.html' %}
 {% block content %}
-
+{% if request.user.is_staff %}
 <p class="m-5">Are you sure you want to delete <b>{{item_type}}: </b> <b>{{item.name}}</b>?</p>
 <form class="m-5" method="POST">
     {% csrf_token %}
     <input class="btn btn-primary" type="submit" value="Yes">
     <a class="btn btn-primary" href="{% url 'manage_home' %}" style="font-weight: 300;">No</a>
 </form>
+{% else %}
+You do not have the permission to view this page.
+{% endif %}
 {% endblock %}

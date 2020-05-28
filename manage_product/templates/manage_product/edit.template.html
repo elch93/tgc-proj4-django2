@@ -2,14 +2,15 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-{% if request.user.is_authenticated %}
+{% if request.user.is_staff %}
 <p class='m-5'>Welcome {{request.user}}</p>
-{% endif %}
 
 <form class="w-50 ml-auto mr-auto" method="POST">
     {% csrf_token %}
     {{form|crispy}}
     <input type="submit">
 </form>
-
+{% else %}
+You do not have the permission to view this page.
+{% endif %}
 {% endblock %}

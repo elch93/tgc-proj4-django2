@@ -1,5 +1,13 @@
 # Cleveland Cavaliers Team Shop
-The website can be viewed [here](https://tgc-proj4-app.herokuapp.com/).
+The website can be viewed [here](https://tgc-proj4-app.herokuapp.com/). Use the dummy staff account to gain access to the [Manage Product page](https://tgc-proj4-app.herokuapp.com/manage_product/) as a staff to manage data in the database. Use the dummy customer account to use the website as a regular customer.
+
+1. Dummy Staff Account
+username: test
+password: t1e2s3t4
+
+2. Dummy Customer Account
+username: testcustomer
+password: dummyaccount
 
 ## Full Stack Frameworks with Django Milestone Project
 Build a full-stack website that allows user to manage a common dataset, which includes allowing users to share their own data with the community and having access to data by others. Main technologies used should include HTML, CSS, JavaScript, Python, Flask & Mongodb.
@@ -27,13 +35,13 @@ Create an e-commerce mobile-friendly website that can be accessed by fans to buy
 - READ: Allow users and site owners to see what products are available in the database.
 - Apps:
     1. Manage Products
+        - This app allows site owners(staff) to manipulate the products, categories and tags data in the database. The main url is: [Manage Product page](https://tgc-proj4-app.herokuapp.com/manage_product/).
     2. Home
     3. Cart
     4. Checkout
     5. Profile
     6. Reviews
     
-
 ### Frontend
 HTML
 CSS
@@ -41,14 +49,22 @@ JS, JQUERY
 Bootstrap
 
 ### Backend
-Mongodb
 Python(Django)
+Postgres 
 
 ### API
 UploadCare
+Stripe Payment
 
 ### Merchandise Types
+The site owner can add more categories, tags and products if they like. The test account is given access to the [Manage Product page](https://tgc-proj4-app.herokuapp.com/manage_product/)
 
+1. Tops
+2. Bottoms
+3. Accessories
+4. Outerwear
+
+Current Tags: Out of Stock, Online Exclusive, Sale
 ## Structure
 
 ## Skeleton

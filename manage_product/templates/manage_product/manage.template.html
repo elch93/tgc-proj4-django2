@@ -5,7 +5,7 @@
 
 {% block content %}
 
-{% if request.user.is_authenticated %}
+{% if request.user.is_staff %}
 <div class="container-fluid">
     <div class="row">
         <a class='p-3' href="{% url 'homepage' %}"><i class="fas fa-chevron-circle-left"></i> back to home</a>
@@ -14,7 +14,7 @@
         </div>
     </div>
 </div>
-{% endif %}
+
 <div class="row justify-content-between">
     <div class="border border-dark shadow-sm p-3 mb-3 ml-auto mr-auto">
         <form method="POST" id='cform'>
@@ -88,4 +88,7 @@
         </div>
     </div>
 </div>
+{% else %}
+You do not have the permission to view this page.
+{% endif %}
 {% endblock %}
