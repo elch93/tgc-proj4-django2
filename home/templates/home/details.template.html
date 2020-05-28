@@ -58,7 +58,8 @@
             <div class="col-3">
                 {% if review.owner == request.user %}
                 <a href="{% url 'edit_review' review_id=review.id %}"><i class="far fa-edit"></i></a>
-                <a class='ml-3' onclick="toggleDeleteReview('{{review.id}}')"><i class="fas fa-trash-alt"></i></a>
+                <a class='ml-3' onclick="toggleDeleteReview('{{review.id}}')" data-toggle="modal"
+                data-target="#deletereviewpanel"><i class="fas fa-trash-alt"></i></a>
                 {% endif %}
             </div>
         </div>
@@ -87,17 +88,26 @@
     <i class="fas fa-caret-square-up"></i>
 </a>
 
-<div class='bg-dark' id='deletereviewpanel'>
-    <div class="bg-light mt-5 ml-auto mr-auto p-5 w-50">
-        <b>Are you sure you want to remove this review?</b>
-        <p class="mt-5">
-            <a class="mr-5">
-                <b>Yes</b>
-            </a>
-            <a onclick="toggleDeleteReview()">
-                <b>No</b>
-            </a>
-        </p>
+<div class="modal fade" id='deletereviewpanel' tabindex="-1" role="dialog" aria-labelledby="deletereviewLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deletereviewLabel">Remove Review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <b>Are you sure you want to remove this review?</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><b>No</b></button>
+                <a class="mr-5" href="">
+                    <b>Yes</b>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -108,12 +118,9 @@
 
     function toggleDeleteReview(item) {
         let current_page = new URL(window.location);
-        current_page['pathname'] = '/review/delete/'+item
-        console.log(current_page)
-        $('#deletereviewpanel').fadeToggle()
-        $('#deletereviewpanel').find('a').eq(0).click(function(){
-            window.location.replace(current_page)
-        })
+        current_page['pathname'] = '/review/delete/'+ item.toString()
+        
+        $('#deletereviewpanel').find('a').eq(0).attr('href', current_page['href'])
     }
 
 </script>

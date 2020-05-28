@@ -7,7 +7,7 @@
 
 {% include 'home/navbar.template.html' %}
 <div class="row">
-    <div class="col-md-4 col-12">
+    <div class="col-lg-4 col-12">
         <div class="row pl-5 pt-3 justify-content-start">
             <h3 class="border-btm-gold mr-md-3"><i class="fas fa-address-book"></i> Delivery Information</h3>
             <button type="button" class="btn" data-toggle="modal" data-target="#updateprofileform">
@@ -25,9 +25,9 @@
             <p><b>Street Address 2: </b>{{profile.street_address_2}}</p>
         </div>
     </div>
-    <div class="col-md-8 col-12 pt-3" id='transactionhistory'>
-        <h3 class="border-btm-wine w-md-50 w-100 ml-3 ml-md-0">Transaction History</h3>
-        <div class="row d-none d-md-block">
+    <div class="col-lg-8 col-12 pt-3" id='transactionhistory'>
+        <h3 class="border-btm-wine w-md-50 w-100 ml-3 ml-lg-0">Transaction History</h3>
+        <div class="row d-none d-lg-flex">
             <div class="col-2"><b>Order ID.</b></div>
             <div class="col-2"><b>Date</b></div>
             <div class="col-1"><b>Total</b></div>
@@ -35,7 +35,7 @@
         </div>
         {% for order in order_history %}
         <hr>
-        <div class="row pl-3 pl-md-0">
+        <div class="row pl-3 pl-lg-0">
             <div class="col-md-2 col-6"><b class="d-inline d-md-none">Order ID: </b>{{order.id}}</div>
             <div class="col-md-2 col-6"><b class="d-inline d-md-none">Date: </b>{{order.date}}</div>
             <div class="col-md-1 col-12"><b class="d-inline d-md-none">Total: </b>${{order.total}}</div>

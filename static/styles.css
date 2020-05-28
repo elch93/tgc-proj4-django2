@@ -358,27 +358,11 @@ footer p i {
     color: #000000;
 }
 
-#deletereviewpanel {
-    position: absolute;
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 100vh;
-    z-index: 5;
-    text-align: center;
-}
-
-/* for med-sized devices */
-@media (min-width:769px) and (max-width:1024px) {
-    
-}
-
 /* for sm-sized devices */
 @media (max-width:768px) {
     #heroimg {
         position: relative;
-        min-height: 500px;
+        height: 500px;
         min-width: 750px;
         left: 50%;
         transform: translateX(-50%);
@@ -420,4 +404,22 @@ footer p i {
 
   
 
+}
+
+/* for med-sized devices */
+@media (min-width:768px) and (max-width:1024px) {
+    #heroimg {
+        min-width: 768px;
+        height: auto;
+    }
+
+    #homepage #herotext1 {
+        font-size: 25px;
+        left: auto;
+        right: auto;
+        width: 100%;
+        top: 300px;
+        text-align: center;
+        z-index: 1;
+    }
 }

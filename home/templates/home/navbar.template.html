@@ -4,11 +4,11 @@
         <div class="col-md-4 order-1 col-12 d-flex justify-content-md-start justify-content-center">
             <a href="{% url 'homepage' %}">
                 <img src="{% static 'images/cavstextwhite.png' %}" id="cavslogo" alt="header logo">
-                <span class="ml-md-2" id="brandtext">TEAM SHOP <i class="d-none d-md-inline fas fa-store"></i></span>
+                <span class="ml-lg-2 ml-md-0 d-inline d-md-block " id="brandtext">TEAM SHOP <i class="d-none d-lg-inline fas fa-store"></i></span>
             </a>
         </div>
         <div class="col-md-4 col-12 pt-2 justify-content-center d-flex order-3 order-md-2">
-            <span>FREE DELIVERY ON ORDERS ABOVE $20</span>
+            <span class="text-center">FREE DELIVERY ON ORDERS ABOVE $20</span>
         </div>
         <div class="col-md-4 col-12 d-flex justify-content-md-end justify-content-center pt-2 order-2 order-md-3">
             {% if not request.user.is_authenticated %}
@@ -55,8 +55,8 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <form class="form-inline" method="GET" action="{%url 'view_products'%}">
-                <input class="form-control mr-sm-2 mt-2 mt-md-0" type="search" placeholder="Search" aria-label="Search" name='q'>
-                <button class='rounded mt-2 mt-md-0' type="submit" id='querybtn'><i class="fas fa-search"></i></button>
+                <input class="form-control mr-sm-2 mt-2 mt-lg-0" type="search" placeholder="Search" aria-label="Search" name='q'>
+                <button class='rounded mt-2 mt-lg-0' type="submit" id='querybtn'><i class="fas fa-search"></i></button>
             </form>
             <li class="nav-item mt-2 mt-md-0">
                 <a class="nav-link" href="{%url 'view_cart'%}">

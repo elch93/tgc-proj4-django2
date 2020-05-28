@@ -6,7 +6,7 @@
 {% include 'home/navbar.template.html' %}
 <div class="container-fluid p-md-5 p-3" id='cartpage'>
     <h3 class="border-btm-gold">Cart Details</h3>
-    <div class="row d-none d-md-block">
+    <div class="row d-none d-md-flex">
         <div class="col-1">
             <b>No.</b>
         </div>
@@ -41,7 +41,7 @@
                 <img style="width:50%;" class="img-fluid" src="{{ item.product_image}}-/quality/lightest/" alt="">
             </div>
         </div>
-        <div class="col-md-3 col-7">
+        <div class="col-md-2 col-7">
             {% if item.size == 0%}
             <p>NIL</p>
             {% else %}
@@ -141,7 +141,7 @@
 
     function toggleDeleteCartItem(item) {
         let deleteRoute = 'delete/' + item.toString()
-        $('#deletecartpanel').fadeToggle()
+        
         $('#deletecartpanel').find('a').eq(0).attr('href', deleteRoute)
     }
 </script>

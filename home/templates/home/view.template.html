@@ -6,7 +6,7 @@
 
 {% include 'home/navbar.template.html' %}
 <div class="container-fluid" id='viewpage' name='#top'>
-    <div class="row justify-content-start p-md-5 p-3">
+    <div class="row justify-content-lg-start justify-content-md-center p-lg-5 p-3">
         <div class="col-12 pl-3 pt-3">
             <label><b>Sort By: </b></label>
             <select class='ml-2' id='sort_products'>
@@ -22,7 +22,7 @@
             <p>There are {{products | length}} results.</p>
         </div>
         {% for i in products %}
-        <div class="col-md-3 col-12 m-md-5 mb-2 resultcard">
+        <div class="col-md-3 col-12 m-lg-5 m-md-2 mb-2 resultcard">
             <a href="{% url 'product_details' product_id=i.id %}">
                 <div class="mb-3">
                     <img class="img-fluid" src="{{ i.image.cdn_url }}-/quality/lightest/" alt="">
