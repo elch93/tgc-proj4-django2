@@ -71,19 +71,15 @@ The site owner can add more categories, tags and products if they like. The test
 
 Current Tags: Out of Stock, Online Exclusive, Sale
 
-## Structure
-
-## Skeleton
-
 ## UX/Surface
 ### Concept
-
+The concept/layout of the website is based on typical ecommerce websites like that of Uniqlo.
 
 ### Color Scheme
 The colors used in this website is based on the team colors of the Cleveland Cavaliers, which are gold, wine and black.
 
 ### User Stories
-![User Stories](readme/userstories.png)
+![User Stories](readme/userstories.PNG)
 
 ## Features
 ### Existing Features
@@ -111,7 +107,7 @@ Emails can be sent out to users who register for an account so that they can hav
 The profile app can allow for multiple addresses. Order made to the address should also be stored in the order transaction history, or to be more precise, the Order Model. A wishlist feature can be implemented for users to add products they want for future reference.
 
 #### Products: Size Chart, Sales Prices, Rating, Pagination
-The product details page can include features like star ratings in addition to reviews, pagination for better organization when the list of products gets longer, and a size chart which gives users a reference to the sizes of apparels. Products with 'sale' tag can have their original prices displayed for comparison.
+The product details page can include features like star ratings in addition to reviews, pagination for better organization when the list of products/reviews/transaction history gets longer, and a size chart which gives users a reference to the sizes of apparels. Products with 'sale' tag can have their original prices displayed for comparison.
 
 #### Discount Codes
 Like most online shopping businesses these days, there can be a discount code system that provides various benefits to customers such as a price discount or free gifts.
@@ -135,25 +131,54 @@ Like most online shopping businesses these days, there can be a discount code sy
 - Adobe Illustrator
 
 ## Testing
+### Dummy Links
+- Links in the footer
+- Size chart
+- Discount code
+
 ### Website Functions
-#### Validation
-
-
-### Known Bugs
+- Clicking on the login/register link will load Django's allauth templates for user account creation etc.
+- The links on the navigation bar will load the list of products according to their categories/tags. 
+- Using the search function will load the search results of products containing the keyword in their descriptions, name or tags. (e.g. 'sal' will give results of products on sale)
+- Clicking on the cart will load the cart details page. Cart items can be edited or deleted by clicking on the edit or trash icon.
+- Clicking on a product will load its details page. Adding the item to cart will add the item with selected size and quantity to the cart.
+- Reviews can be edited or deleted by its creator.
+- Most user actions will receive feedback messages.
+- Purchases below $20 will receive an order line of $10 delivery in Stripe checkout.
+- Purchases can only be made when the user is logged in and when the delivery address is filled.
+- The delivery information can be edited on the profile page by clicking on the edit icon to load the form.
+- Clicking on the 'leave a review' button allows the user to create a review for the purchased product.
 
 ### Main Challenges
-
+Learning Django was the steepest learning curve out of all the 4 projects so far. In addition to the time constraint for this project, I believe that more features can be implemented for the completeness of this website.
 
 ## Deployment
+This project is coded on Visual Studio Code and respositories are on GitHub. The website is deployed on Heroku. The database was initially created on Django's sqlite but transferred into Postgres after deployment on Heroku.
+
+To clone this project:
+
+    Download/clone the master branch of this respository.
+    Ensure that PIP, Visual Studio Code(or other code editors), Python and Git are in your system.
+    Install required extensions/modules from requirements.txt by typing "pip -r requirements.txt" in the terminal.
+
+Heroku:
+
+    Create a new app and a Procfile that will allow the app to be deployed on Heroku.
+    Input .env secret key values inside app settings. Set IP: 0.0.0.0 and Port:5000.
+    Install Heroku CLI on Windows and login.
+    To push to Heroku from VSC, enter 'git push heroku master'.
+
+Others:
+
+    You will need Django secret key, Stripe secret, publishable, endpoint secret keys, database url in your .env file. Use Python's load_dotenv() to implement these keys into the project. 
 
 ## Credits
-### Content
-
-
-### Media
+### Media & Content
 - Product images and descriptions are from [NBA Store EU](https://www.nbastore.eu/stores/nba/en/c/shop-by-team/eastern/cleveland-cavaliers).
+- Hero image is from [fansided](https://fansided.com/wp-content/uploads/getty-images/2018/07/955143450.jpeg).
+- Cleveland Cavaliers Wordmark is from [Wikipedia](https://en.wikipedia.org/).
 
 ### Acknowledgements
 - This project is inspired by websites like [Cavaliers Team Shop](https://www.cavaliersteamshop.com/) and [Uniqlo](https://www.uniqlo.com/sg/#undefined).
 
-- This is for educational use. Disclaimer: 
+- This is for educational use.
