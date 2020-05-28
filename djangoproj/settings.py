@@ -34,7 +34,7 @@ UPLOADCARE = {
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['tgc-proj4-app.herokuapp.com/']
+ALLOWED_HOSTS = ['.tgc-proj4-app.herokuapp.com']
 
 
 # Application definition
