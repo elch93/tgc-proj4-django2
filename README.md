@@ -72,14 +72,18 @@ The site owner can add more categories, tags and products if they like. The test
 Current Tags: Out of Stock, Online Exclusive, Sale
 
 ## UX/Surface
-### Concept
-The concept/layout of the website is based on typical ecommerce websites like that of Uniqlo.
+### Wireframe/Concept
+![User Stories](readme/wireframe.png)
+
+The concept/layout of the website is based on typical ecommerce websites like that of Uniqlo & Zalora.
 
 ### Color Scheme
 The colors used in this website is based on the team colors of the Cleveland Cavaliers, which are gold, wine and black.
 
 ### User Stories
 ![User Stories](readme/userstories.PNG)
+
+![Models](readme/models.PNG)
 
 ## Features
 ### Existing Features
